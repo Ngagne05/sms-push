@@ -1,0 +1,81 @@
+<div class="container-fluid" style="margin-top: 2%;">
+    <div class="form">
+        <mat-card class="col-sm-3" style="margin: auto;">
+            <form class="form-group container-fluid">
+
+                <mat-card-header>
+                    <mat-card-title>Ajout d'une entreprise</mat-card-title>
+                    <!-- <mat-card-subtitle></mat-card-subtitle> -->
+                </mat-card-header>
+                <mat-card-content class="container-fluid">
+                    <div class="form-inline">
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Nom" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Adresse">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Coût Unitaire" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Solde">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Code" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="URL DLR">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group input-group mymargin">
+
+                            <mat-form-field>
+                                <input matInput placeholder="Login" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Password" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Confirmer Password" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group input-group mymargin">
+                            <mat-form-field>
+                                <input matInput placeholder="Téléphone" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="goBack()" color="warn">Annuler</button>
+
+                    <button mat-raised-button type="submit" color="primary">Enregistrer</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

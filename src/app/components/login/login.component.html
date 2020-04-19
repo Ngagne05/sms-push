@@ -1,0 +1,39 @@
+<div class="container-fluid col-sm-12" style="margin: auto;">
+    <div class="row">
+  
+    </div>
+    <div class="container-fluid col-sm-3  rounded mat-elevation-z8" style="margin: auto; margin-top: 10%; padding: 1%; background-color: rgb(57, 15, 155);">
+  
+      <div class="card card-stats mat-elevation-z2" >
+        <div class="card-header card-header-success card-header-icon w3-white">
+          <table class="container-fluid centered">
+            <tbody>
+              <tr><td><img mat-card-icon src="../../../assets/img/LOGO TOUCH (1).png" height="46" width="46" alt=""></td>
+              <td><h4  class="float-center">Authentification</h4></td></tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <div class="card-body">
+          <form class="form" >
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <input type="text" class="form-control"   required>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input  type="password" class="form-control"  required>
+            </div>
+            <div style="margin: auto;">
+              <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Se connecter</button> -->
+              <button mat-raised-button color="primary" type="submit" [routerLink]="['dashboard']">Se connecter</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          
+        </div>
+      </div>
+  
+    </div>
+  </div>

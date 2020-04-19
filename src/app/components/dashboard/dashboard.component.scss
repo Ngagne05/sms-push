@@ -1,0 +1,40 @@
+.admin-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:7%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+}
+
+.sidenav{
+    width: 200px;
+    background:#ffffff;
+  
+}
+
+button{
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.entreprise-infos{
+  margin-top: 3%;
+  margin-bottom:25%;
+  width: 100%;
+  background-color: rgb(216, 230, 252);
+  border: solid 1px rgb(189, 208, 212);
+      td {
+      border-top: solid 1px rgb(189, 208, 212);
+      border-bottom: solid 1px rgb(189, 208, 212);
+
+    };
+    th{
+      border-top: solid 1px rgb(189, 208, 212);
+      border-bottom: solid 1px rgb(189, 208, 212);   
+      width: 5%;
+     }
+
+}
