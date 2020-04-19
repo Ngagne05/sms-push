@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z4" >
+<mat-toolbar class="mat-elevation-z4" color="primary" >
    
 </mat-toolbar>
 
@@ -30,12 +30,14 @@
         </table>
     </div>
    <div class="container-fluid">
-    <button mat-raised-button style="width: 100%;" [routerLink]="['entreprises']">Historique SMS</button>
-    <button mat-raised-button style="width: 100%;" [routerLink]="['entreprises']">H. Rechargements</button>
+    <button mat-raised-button style="width: 100%;" [routerLink]="['send']">Send SMS</button>
+    <button mat-raised-button style="width: 100%;" [routerLink]="['historiques']">Historique SMS</button>
+    <button mat-raised-button style="width: 100%;" [routerLink]="['rechargements']">H. Rechargements</button>
     
     <button mat-raised-button style="width: 100%;" [routerLink]="['entreprises']">Entreprises</button>
     <button mat-raised-button style="width: 100%;" [routerLink]="['utilisateurs']">Admins</button>
     <button mat-raised-button style="width: 100%;" >Charger un compte</button>
+    <button mat-raised-button style="width: 100%;" [routerLink]="['logs']">Logs</button>
 
    </div>
 

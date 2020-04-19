@@ -6,12 +6,13 @@
   
       <div class="card card-stats mat-elevation-z2" >
         <div class="card-header card-header-success card-header-icon w3-white">
-          <table class="container-fluid centered">
-            <tbody>
-              <tr><td><img mat-card-icon src="../../../assets/img/LOGO TOUCH (1).png" height="46" width="46" alt=""></td>
-              <td><h4  class="float-center">Authentification</h4></td></tr>
-            </tbody>
-          </table>
+         <div class="row">
+            <div style="margin:auto">
+              <div>
+                <h4>Authentification</h4>
+              </div>
+            </div>
+         </div>
           
         </div>
         <div class="card-body">
@@ -24,9 +25,11 @@
               <label for="password">Mot de passe</label>
               <input  type="password" class="form-control"  required>
             </div>
-            <div style="margin: auto;">
+            <div class="row container-fluid" style="margin: auto;">
               <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Se connecter</button> -->
-              <button mat-raised-button color="primary" type="submit" [routerLink]="['dashboard']">Se connecter</button>
+              <div style="margin:auto;">
+                <button mat-raised-button style="margin:auto;" color="primary" type="submit" [routerLink]="['dashboard']">Se connecter</button>
+              </div>
             </div>
           </form>
         </div>

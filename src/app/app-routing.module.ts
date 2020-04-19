@@ -7,6 +7,10 @@ import { EntreprisecreateComponent } from './components/dashboard/entreprises/en
 import { EntreprisedetailsComponent } from './components/dashboard/entreprises/entreprisedetails/entreprisedetails.component';
 import { AdminlistComponent } from './components/administrations/adminlist/adminlist.component';
 import { AdmincreateComponent } from './components/administrations/admincreate/admincreate.component';
+import { RechargementsComponent } from './components/dashboard/rechargements/rechargements.component';
+import { HistoriquesComponent } from './components/dashboard/historiques/historiques.component';
+import { LogsComponent } from './components/dashboard/logs/logs.component';
+import { SendsmsComponent } from './components/sendsms/sendsms.component';
 
 
 const routes: Routes = [
@@ -41,6 +45,22 @@ const routes: Routes = [
       },{
         path: "utilisateurs/edit/:id",
         component: AdmincreateComponent
+      },
+      {
+        path: "rechargements",
+        component: RechargementsComponent
+      },
+      {
+        path: "historiques",
+        component: HistoriquesComponent
+      },
+      {
+        path: "logs",
+        component: LogsComponent
+      },
+      {
+        path: "send",
+        component: SendsmsComponent
       }
     ]
   }

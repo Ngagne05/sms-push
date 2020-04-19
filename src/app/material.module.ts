@@ -20,6 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { MatCardModule } from '@angular/material/card';
         MatDialogModule,
         MatCheckboxModule,
         MatAutocompleteModule,
-        MatCardModule
+        MatCardModule,
+        MatRadioModule
     ],
     exports: [
         MatSidenavModule,
@@ -64,7 +66,8 @@ import { MatCardModule } from '@angular/material/card';
         MatDialogModule,
         MatCheckboxModule,
         MatAutocompleteModule,
-        MatCardModule
+        MatCardModule,
+        MatRadioModule
 
     ]
 })

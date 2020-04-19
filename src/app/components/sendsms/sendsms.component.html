@@ -1,0 +1,50 @@
+<div class="row container-fluid">
+    <!-- send sms  -->
+    <div class="container-fluid col-sm-4">
+        <div class="container-fluid row">
+            <div style="margin: auto;">
+                <h4>Envoyer un sms</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Sender:</label>
+            <input type="text" class="form-control" placeholder="Enter Organisation: (ex:BlackStar)" id="sender" required>
+        </div>
+        <div class="form-group">
+            <label for="email">RETID:</label>
+            <input type="text" class="form-control" placeholder="Enter Campagne" id="campagne">
+        </div>
+        <div class="form-group">
+            <mat-form-field class="container-fluid">
+                <textarea matInput name="sms" [(ngModel)]="text" class="form-control" rows="5"  placeholder="Text"></textarea>
+            <mat-hint align="end">{{text?.length || 0}}/140</mat-hint>
+
+            </mat-form-field>            
+        </div>
+        <div class="">
+            NBR de Destinataires (cliquer sur le button pour modifier):
+        </div>
+        <button mat-raised-button color="primary" (click)="un=!un" class="mb-3">
+            <span [hidden]="un">Un</span><span [hidden]="!un">Plusieurs</span>
+        </button>
+        <div class="input-group mb-3" [hidden]="un">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Destinataire</span>
+            </div>
+            <input type="text" class="form-control col-sm-3" placeholder="Indicatif" value="+221" id="indicatif">
+            <input type="tel" class="form-control col-sm-9" placeholder="Numéro" id="numero">
+        </div>
+        <div class="input-group mb-3" [hidden]="!un">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Feuille Excels: Liste destinataires</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+        </div>
+        <div class="input-group mb-3">
+            <button class="btn btn-success" id="btnsendsms">Envoyer</button>
+        </div>
+       
+
+        
+    </div>
+   
