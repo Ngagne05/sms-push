@@ -37,9 +37,9 @@ import { SendsmsComponent } from './components/sendsms/sendsms.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AppRoutingModule,
     MaterialAppModule
   ],
   providers: [],

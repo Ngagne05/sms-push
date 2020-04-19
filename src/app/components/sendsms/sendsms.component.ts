@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendsmsComponent implements OnInit {
   un=false;
+  text;
   constructor() { }
 
   ngOnInit(): void {
