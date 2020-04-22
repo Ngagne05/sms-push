@@ -3,50 +3,50 @@
   
       <mat-card class="col-sm-4" style="margin: auto;">
         <mat-card-header class="w3-center">
-          <mat-card-title >Détails Entreprise</mat-card-title>
+          <mat-card-title >Détails Utilisateur</mat-card-title>
           <!-- <mat-card-subtitle></mat-card-subtitle> -->
         </mat-card-header>
         <mat-card-content class="container-fluid">
           <table class="table">
             <tr>
-              <th>Raison Sociale</th>
-              <td>{{entreprise.raison_sociale}}</td>
+              <th>Prénom</th>
+              <td>{{user.prenom}}</td>
             </tr>
             <tr>
-              <th>Adresse</th>
-              <td>{{entreprise.adresse}}</td>
+              <th>Nom</th>
+              <td>{{user.nom}}</td>
             </tr>
             <tr>
-              <th>Coût unitaire</th>
-              <td>{{entreprise.cout_unitaire}}</td>
+              <th>Login</th>
+              <td>{{user.login}}</td>
             </tr>
             <tr>
-                <th>Solde</th>
-                <td>{{entreprise.solde}}</td>
+                <th>Email</th>
+                <td>{{user.email}}</td>
               </tr>
             
             <tr>
-              <th>Code</th>
-              <td >{{entreprise.code}}</td>
+              <th>Matricule</th>
+              <td >{{user.matricule}}</td>
             </tr>
             <tr>
-              <th>URL DLR</th>
-              <td >{{entreprise.ret_url}}</td>
+              <th>Téléphone</th>
+              <td >{{user.telephone}}</td>
             </tr>
             <tr>
-                <th>Téléphone</th>
-                <td>{{entreprise.telephone}}</td>
+                <th>Fonction</th>
+                <td>{{user.fonction?.libelle}}</td>
               </tr>
             <tr>
-              <th>Login</th>
-              <td >{{entreprise.login}}</td>
+              <th>Département</th>
+              <td >{{user.departement?.libelle}}</td>
             </tr>
             
           </table>
   
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button [routerLink]="['../../']" color="primary">Retourner</button>
+          <button mat-raised-button [routerLink]="['../']" color="primary">Retourner</button>
   
           <button mat-raised-button color="warn">Supprimer</button>
         </mat-card-actions>

@@ -11,6 +11,10 @@ import { RechargementsComponent } from './components/dashboard/rechargements/rec
 import { HistoriquesComponent } from './components/dashboard/historiques/historiques.component';
 import { LogsComponent } from './components/dashboard/logs/logs.component';
 import { SendsmsComponent } from './components/sendsms/sendsms.component';
+import { AdmindetailsComponent } from './components/administrations/admindetails/admindetails.component';
+import { UsersentreprisescreateComponent } from './components/dashboard/usersentreprisescreate/usersentreprisescreate.component';
+import { UsersentreprisesComponent } from './components/dashboard/usersentreprises/usersentreprises.component';
+import { UsersentreprisesdetailsComponent } from './components/dashboard/usersentreprisesdetails/usersentreprisesdetails.component';
 
 
 const routes: Routes = [
@@ -36,6 +40,22 @@ const routes: Routes = [
       {
         path: "entreprises/details/:id",
         component: EntreprisedetailsComponent
+      },
+      {
+        path: "entreprises/users/:id/create",
+        component: UsersentreprisescreateComponent
+      },
+      {
+        path: "entreprises/users/:id/edit/:user",
+        component: UsersentreprisescreateComponent
+      },
+      {
+        path: "entreprises/users/:id",
+        component: UsersentreprisesComponent
+      },
+      {
+        path: "entreprises/users/:id/details",
+        component: UsersentreprisesdetailsComponent
       },{
         path: "utilisateurs",
         component: AdminlistComponent
@@ -45,6 +65,9 @@ const routes: Routes = [
       },{
         path: "utilisateurs/edit/:id",
         component: AdmincreateComponent
+      },{
+        path: "utilisateurs/details",
+        component: AdmindetailsComponent
       },
       {
         path: "rechargements",

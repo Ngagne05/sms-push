@@ -14,39 +14,30 @@ export class EntreprisedetailsComponent implements OnInit {
   data: Entreprise[] = [
     {
       id: "1",
-      nom: "BST",
+      raison_sociale: "BST",
       adresse: "SICAP FOIRE",
       cout_unitaire: "25",
       solde: "1500",
-      code: "1111",
-      ret_url: "https://blackstar-tech.com",
       telephone: "2217854444",
-      login: "bst2019",
-      password: ""
+     
     },
     {
       id: "2",
-      nom: "LONASE",
+      raison_sociale: "LONASE",
       adresse: "SICAP FOIRE",
       cout_unitaire: "25",
       solde: "1500",
-      code: "1111",
-      ret_url: "https://blackstar-tech.com",
       telephone: "2217854444",
-      login: "bst2019",
-      password: ""
+     
     },
     {
       id: "3",
-      nom: "BNDE",
+      raison_sociale: "BNDE",
       adresse: "SICAP FOIRE",
       cout_unitaire: "25",
       solde: "1500",
-      code: "1111",
-      ret_url: "https://blackstar-tech.com",
       telephone: "2217854444",
-      login: "bst2019",
-      password: ""
+      
     }
   ];
   entreprise;

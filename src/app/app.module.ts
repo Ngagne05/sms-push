@@ -18,6 +18,10 @@ import { RechargementsComponent } from './components/dashboard/rechargements/rec
 import { HistoriquesComponent } from './components/dashboard/historiques/historiques.component';
 import { LogsComponent } from './components/dashboard/logs/logs.component';
 import { SendsmsComponent } from './components/sendsms/sendsms.component';
+import { AdmindetailsComponent } from './components/administrations/admindetails/admindetails.component';
+import { UsersentreprisesComponent } from './components/dashboard/usersentreprises/usersentreprises.component';
+import { UsersentreprisescreateComponent } from './components/dashboard/usersentreprisescreate/usersentreprisescreate.component';
+import { UsersentreprisesdetailsComponent } from './components/dashboard/usersentreprisesdetails/usersentreprisesdetails.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { SendsmsComponent } from './components/sendsms/sendsms.component';
     RechargementsComponent,
     HistoriquesComponent,
     LogsComponent,
-    SendsmsComponent
+    SendsmsComponent,
+    AdmindetailsComponent,
+    UsersentreprisesComponent,
+    UsersentreprisescreateComponent,
+    UsersentreprisesdetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -16,12 +16,6 @@
                 </tr>
                 <tr>
                     <th>
-                        <mat-icon>person</mat-icon>
-                    </th>
-                    <td>{{entreprise?.login}}</td>
-                </tr>
-                <tr>
-                    <th>
                         <mat-icon>account_balance</mat-icon>
                     </th>
                     <td>{{entreprise?.solde}} FCFA</td>
@@ -34,9 +28,8 @@
     <button mat-raised-button style="width: 100%;" [routerLink]="['historiques']">Historique SMS</button>
     <button mat-raised-button style="width: 100%;" [routerLink]="['rechargements']">H. Rechargements</button>
     
-    <button mat-raised-button style="width: 100%;" [routerLink]="['entreprises']">Entreprises</button>
+    <button mat-raised-button style="width: 100%;" [routerLink]="['entreprises']">Clients</button>
     <button mat-raised-button style="width: 100%;" [routerLink]="['utilisateurs']">Admins</button>
-    <button mat-raised-button style="width: 100%;" >Charger un compte</button>
     <button mat-raised-button style="width: 100%;" [routerLink]="['logs']">Logs</button>
 
    </div>

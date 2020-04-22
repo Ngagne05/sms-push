@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Utilisateur } from 'src/app/models/utilisateur';
-import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-adminlist',
-  templateUrl: './adminlist.component.html',
-  styleUrls: ['./adminlist.component.scss']
+  selector: 'app-usersentreprises',
+  templateUrl: './usersentreprises.component.html',
+  styleUrls: ['./usersentreprises.component.scss']
 })
-export class AdminlistComponent implements OnInit {
+export class UsersentreprisesComponent implements OnInit {
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource: MatTableDataSource<Utilisateur>;
   displayedColumns: string[] = [
@@ -81,14 +81,12 @@ export class AdminlistComponent implements OnInit {
       }
     }
   ];
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Utilisateur>(this.data);
 
   }
 
-  goBack(){
-    this.location.back();
-  }
+
 }
