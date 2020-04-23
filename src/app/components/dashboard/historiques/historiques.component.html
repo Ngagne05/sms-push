@@ -8,14 +8,14 @@
         </div>
         <div class="mymargin ">
             <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker" placeholder="Date début" formControlName="picker1">
+              <input matInput [matDatepicker]="picker" placeholder="Date début" >
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
           <div class="mymargin ">
             <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker2" placeholder="Date fin" formControlName="picker2">
+              <input matInput [matDatepicker]="picker2" placeholder="Date fin" >
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
               <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
@@ -32,21 +32,21 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row" style="margin-bottom:1%;">
     <div class="container-fluid col-sm-9">
-      <div class="container-fluid" style="margin:auto;">
-        <table class="" >
+      <div class="card col-sm-4 container-fluid" >
+        <table class=" container-fluid">
           <tbody>
             <tr>
-              <th> Total SMS Envoyés</th>
+              <td> Total SMS Envoyés</td>
               <td> 100</td>
             </tr>
             <tr>
-              <th>SMS Reçus</th>
+              <td>SMS Reçus</td>
               <td> 99</td>
             </tr>
             <tr>
-              <th>SMS en cours</th>
+              <td>SMS en cours</td>
               <td> 1</td>
             </tr>
           </tbody>
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="container-fluid col-sm-3">
-      <div style="margin: auto;">
+      <div style="margin: auto; ">
         <button (click)="exporter()" mat-raised-button color="primary">Exporter</button>
       </div>
     </div>

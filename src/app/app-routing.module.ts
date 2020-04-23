@@ -17,6 +17,7 @@ import { UsersentreprisesComponent } from './components/dashboard/usersentrepris
 import { UsersentreprisesdetailsComponent } from './components/dashboard/usersentreprisesdetails/usersentreprisesdetails.component';
 import { ChangermotdepasseComponent } from './components/dashboard/changermotdepasse/changermotdepasse.component';
 import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
+import { EntrepriserechargeComponent } from './components/dashboard/entreprises/entrepriserecharge/entrepriserecharge.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: "entreprises",
         component: EntrepriselistComponent
+      },
+      {
+        path: "entreprises/recharger/:id",
+        component: EntrepriserechargeComponent
       },
       {
         path: "entreprises/create",

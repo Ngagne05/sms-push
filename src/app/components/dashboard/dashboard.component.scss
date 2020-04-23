@@ -42,3 +42,15 @@ button{
 .example-spacer {
   flex: 1 1 auto;
 }
+
+
+.btnoption{
+  background:  linear-gradient(to left, rgb(108, 108, 255),rgb(31, 31, 158));
+  color: white;
+}
+
+.btnoptionactive{
+  background: linear-gradient(to right, rgb(18, 18, 97), rgb(18, 18, 97), white);
+  color: white;
+  border-right: solid 3px rgb(8, 8, 71);
+}

@@ -65,8 +65,8 @@
             <button matTooltip="utilisateurs" [routerLink]="['users',element.id]" mat-icon-button color="primary">
               <i class="fa fa-users"></i>
           </button>
-            <button matTooltip="charger crédit" mat-icon-button color="primary">
-              <i class="fa fa-usd"></i>
+            <button matTooltip="charger crédit" [routerLink]="['recharger',element.id]" mat-icon-button color="primary">
+              <i class="material-icons">account_balance</i>
           </button>
         </td>
     </ng-container>

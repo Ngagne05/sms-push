@@ -1,6 +1,6 @@
 <div class="row container-fluid" style="margin-top: 5%;">
     <!-- send sms  -->
-    <div class="container-fluid col-sm-4 mat-elevation-z2" style="padding-bottom: 2%;" >
+    <div class="container-fluid col-sm-4 mat-elevation-z2" style="padding-bottom: 2%;">
         <div class="container-fluid row" style="margin-top: 2%;">
             <div style="margin: auto;">
                 <h4>Envoyer de SMS</h4>
@@ -11,31 +11,33 @@
                 <input type="text" matInput placeholder="Expéditeur">
             </mat-form-field>
         </div>
-        <div class="form-group">
-            <label>Destinataires: </label>
-            <div class="form-row">
-                <mat-radio-group [(ngModel)]="nbrdest" color="primary">
-                    <mat-radio-button value="1">Un</mat-radio-button>
-                    &nbsp;&nbsp;<mat-radio-button value="2">Plusieurs</mat-radio-button>
-                </mat-radio-group>
-            </div>
+        <div class="form-row">
+            <div class="container-fluid">Destinataires: </div>
         </div>
-        <div class="form-group" *ngIf="nbrdest==1">
+
+        <div class="form-row">
+            <mat-radio-group class="container-fluid" [(ngModel)]="nbrdest" color="primary">
+                <mat-radio-button value="1">Un</mat-radio-button>
+                &nbsp;&nbsp;<mat-radio-button value="2">Plusieurs</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="form-row" *ngIf="nbrdest==1">
             <mat-form-field class="container-fluid">
                 <input type="telephone" matInput placeholder="Numéro">
             </mat-form-field>
         </div>
-        <div class="form-row" *ngIf="nbrdest==2">
-            <div class="col">
+        <div class="form-row container-fluid" *ngIf="nbrdest==2" style="margin:1%;">
+            <div class="col container-fluid">
                 <button mat-raised-button color="primary" (click)="fileInput.click()">
                     Charger un fichier
-                    <input #fileInput type="file"  style="display:none;" />
+                    <input #fileInput type="file" style="display:none;" />
                 </button>
             </div>
             <div class="container-fluid col">
                 <p></p>
             </div>
         </div>
+
         <div class="form-row" *ngIf="nbrdest==2">
             <mat-form-field class="container-fluid">
                 <input type="text" matInput placeholder="Identifiant Campagne">
