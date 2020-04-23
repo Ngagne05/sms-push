@@ -25,6 +25,7 @@ import { UsersentreprisesdetailsComponent } from './components/dashboard/usersen
 import { ChangermotdepasseComponent } from './components/dashboard/changermotdepasse/changermotdepasse.component';
 import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
 import { ExcelserviceService } from './shareservice/excelservice.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { ExcelserviceService } from './shareservice/excelservice.service';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialAppModule
+    MaterialAppModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ExcelserviceService],
   bootstrap: [AppComponent]
