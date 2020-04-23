@@ -22,6 +22,9 @@ import { AdmindetailsComponent } from './components/administrations/admindetails
 import { UsersentreprisesComponent } from './components/dashboard/usersentreprises/usersentreprises.component';
 import { UsersentreprisescreateComponent } from './components/dashboard/usersentreprisescreate/usersentreprisescreate.component';
 import { UsersentreprisesdetailsComponent } from './components/dashboard/usersentreprisesdetails/usersentreprisesdetails.component';
+import { ChangermotdepasseComponent } from './components/dashboard/changermotdepasse/changermotdepasse.component';
+import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
+import { ExcelserviceService } from './shareservice/excelservice.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { UsersentreprisesdetailsComponent } from './components/dashboard/usersen
     AdmindetailsComponent,
     UsersentreprisesComponent,
     UsersentreprisescreateComponent,
-    UsersentreprisesdetailsComponent
+    UsersentreprisesdetailsComponent,
+    ChangermotdepasseComponent,
+    EditerprofilComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import { UsersentreprisesdetailsComponent } from './components/dashboard/usersen
     AppRoutingModule,
     MaterialAppModule
   ],
-  providers: [],
+  providers: [ExcelserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

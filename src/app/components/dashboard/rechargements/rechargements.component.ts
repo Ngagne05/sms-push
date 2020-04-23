@@ -11,6 +11,7 @@ export class RechargementsComponent implements OnInit {
     `id`,
     `moyen`,
     `montant`,
+    'ancien_solde',
     `date_recharge`,
     `entreprise`
   ];
@@ -21,21 +22,26 @@ export class RechargementsComponent implements OnInit {
       moyen: 'orange money',
       montant: "20 000",
       date_recharge: "15/04/2020 10:05:54",
-      entreprise: "BST"
+      entreprise: "BST",
+      ancien_solde: "12 000"
     },
     {
       id: 2,
       moyen: 'orange money',
       montant: "20 000",
       date_recharge: "14/04/2020 10:05:54",
-      entreprise: "BST"
+      entreprise: "BST",
+      ancien_solde: "11 000"
+
     },
     {
       id: 3,
       moyen: 'orange money',
       montant: "20 000",
       date_recharge: "11/04/2020 10:05:54",
-      entreprise: "BST"
+      entreprise: "BST",
+      ancien_solde: "6 000"
+
     }
   ];
   constructor() { }

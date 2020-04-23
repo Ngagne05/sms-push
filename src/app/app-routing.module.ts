@@ -15,6 +15,8 @@ import { AdmindetailsComponent } from './components/administrations/admindetails
 import { UsersentreprisescreateComponent } from './components/dashboard/usersentreprisescreate/usersentreprisescreate.component';
 import { UsersentreprisesComponent } from './components/dashboard/usersentreprises/usersentreprises.component';
 import { UsersentreprisesdetailsComponent } from './components/dashboard/usersentreprisesdetails/usersentreprisesdetails.component';
+import { ChangermotdepasseComponent } from './components/dashboard/changermotdepasse/changermotdepasse.component';
+import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
 
 
 const routes: Routes = [
@@ -84,7 +86,13 @@ const routes: Routes = [
       {
         path: "send",
         component: SendsmsComponent
-      }
+      },{
+        path:"changepwd",
+        component:ChangermotdepasseComponent
+      },{
+        path:"profil",
+        component:EditerprofilComponent
+      },
     ]
   }
 ];

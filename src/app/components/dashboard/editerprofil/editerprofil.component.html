@@ -1,0 +1,88 @@
+<div class="container-fluid" style="margin-top: 10%;">
+    <div class="form">
+        <mat-card class="col-sm-5" style="margin: auto;">
+            <form class="form-group container-fluid">
+
+                <mat-card-header>
+                    <mat-card-title>Ajout d'un utilisateur</mat-card-title>
+                    <!-- <mat-card-subtitle></mat-card-subtitle> -->
+                </mat-card-header>
+                <mat-card-content class="container-fluid">
+                    <div class="form-row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Prénom" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Nom" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Login" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Email" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Matricule" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Téléphone" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Mot de Passe" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <input matInput placeholder="Confirmer Mot de Passe" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <mat-form-field>
+                                <mat-label>Fonction</mat-label>
+                                <mat-select>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <mat-label>Département</mat-label>
+                                <mat-select>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button type="button" mat-raised-button (click)="goBack()"
+                        color="warn">Annuler</button>
+
+                    <button mat-raised-button type="submit" color="primary">Enregistrer</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>
