@@ -18,6 +18,7 @@ import { UsersentreprisesdetailsComponent } from './components/dashboard/usersen
 import { ChangermotdepasseComponent } from './components/dashboard/changermotdepasse/changermotdepasse.component';
 import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
 import { EntrepriserechargeComponent } from './components/dashboard/entreprises/entrepriserecharge/entrepriserecharge.component';
+import { TarificationsComponent } from './components/dashboard/entreprises/tarifications/tarifications.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: "entreprises",
         component: EntrepriselistComponent
+      },
+      {
+        path: "entreprises/tarifications/:id",
+        component: TarificationsComponent
       },
       {
         path: "entreprises/recharger/:id",
