@@ -28,6 +28,8 @@ import { ExcelserviceService } from './shareservice/excelservice.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TarificationsComponent } from './components/dashboard/entreprises/tarifications/tarifications.component';
 import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
+import { MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
+import { MyDateFormat } from './utils/my-date-format';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,12 @@ import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ExcelserviceService],
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'fr'
+    },
+    {provide: DateAdapter, useClass: MyDateFormat},
+    ExcelserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

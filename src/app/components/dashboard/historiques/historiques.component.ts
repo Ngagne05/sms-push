@@ -8,6 +8,8 @@ import { ExcelserviceService } from 'src/app/shareservice/excelservice.service';
   styleUrls: ['./historiques.component.scss']
 })
 export class HistoriquesComponent implements OnInit {
+  date1 = new Date();
+  date2 = new Date();
   displayedColumns: string[] = [
     `id`,
     `receiver`,

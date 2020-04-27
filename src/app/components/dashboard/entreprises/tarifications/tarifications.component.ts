@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tarifications',
@@ -7,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./tarifications.component.scss']
 })
 export class TarificationsComponent implements OnInit {
+
   displayedColumns: string[] = [
     'indicatif',
     'operateur',
@@ -20,10 +22,13 @@ export class TarificationsComponent implements OnInit {
     }
   ];
   dataSource: MatTableDataSource<any>;
-  constructor() { }
+  constructor(private location : Location) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.data);
   }
 
+  goBack(){
+    this.location.back();
+  }
 }

@@ -7,19 +7,19 @@
             </mat-form-field> 
         </div>
         <div class="mymargin ">
-            <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker" placeholder="Date début" >
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div class="mymargin ">
-            <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker2" placeholder="Date fin" >
-              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-          </div>
+          <mat-form-field style="width:100px;">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="date1" placeholder="Date début">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="mymargin ">
+          <mat-form-field style="width:100px;">
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="date2" placeholder="Date fin">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
 
           <div class="mymargin">
               <button mat-raised-button color="primary">rechercher</button>
@@ -46,7 +46,7 @@
     
         <!-- Progress Column -->
         <ng-container matColumnDef="moyen">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Moyen </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Moyen de paiement </th>
           <td mat-cell *matCellDef="let row"> {{row.moyen}} </td>
         </ng-container>
     

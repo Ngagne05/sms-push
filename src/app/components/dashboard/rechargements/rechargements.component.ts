@@ -7,12 +7,14 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./rechargements.component.scss']
 })
 export class RechargementsComponent implements OnInit {
+  date1 = new Date();
+  date2 = new Date();
   displayedColumns: string[] = [
     `id`,
-    `moyen`,
     `montant`,
-    'ancien_solde',
     `date_recharge`,
+    `moyen`,
+    'ancien_solde',
     `entreprise`
   ];
   dataSource: MatTableDataSource<any>;

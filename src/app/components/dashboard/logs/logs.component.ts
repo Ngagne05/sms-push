@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./logs.component.scss']
 })
 export class LogsComponent implements OnInit {
+  date1 = new Date();
+  date2 = new Date();
   displayedColumns: string[] = [
     `id`,
     `type_event`,

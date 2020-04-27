@@ -53,7 +53,7 @@
                 <form class="form-group container-fluid">
     
                     <mat-card-header>
-                        <mat-card-title>Tarification</mat-card-title>
+                        <mat-card-title>Destination</mat-card-title>
                         <!-- <mat-card-subtitle></mat-card-subtitle> -->
                     </mat-card-header>
                     <mat-card-content class="container-fluid" style="margin: auto;">
@@ -67,7 +67,7 @@
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="text" matInput placeholder="Pays" required>
+                                    <input type="text" matInput placeholder="Opérateur" required>
                                 </mat-form-field>
                             </div>
                            
@@ -86,7 +86,7 @@
                     </mat-card-content> 
                     <mat-card-actions >
                         <button type="button" mat-raised-button 
-                            color="warn">Annuler</button>
+                            color="warn" (click)="goBack()">Annuler</button>
     
                         <button mat-raised-button type="submit" color="primary">Enregistrer</button>
                     </mat-card-actions>

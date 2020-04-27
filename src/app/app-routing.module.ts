@@ -40,7 +40,7 @@ const routes: Routes = [
         component: EntrepriselistComponent
       },
       {
-        path: "entreprises/tarifications/:id",
+        path: "entreprises/destinations/:id",
         component: TarificationsComponent
       },
       {
