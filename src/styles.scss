@@ -7,3 +7,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: inline;
     margin: 2%;;
   }
+
+  .mat-cell,.mat-body,.mat-body-1,.mat-form-field,.mat-raised-button,
+  .mat-accordion,.mat-expansion-panel,.mat-expansion-panel-header,.mat-list,
+  .mat-panel-title,span,.mat-line,th,tr,.table,table,td,.mat-row,
+  .mat-card,.mat-card-title,.mat-tab-label-content,tbody,body{
+      font-size: 12px !important;
+  }

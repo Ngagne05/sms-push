@@ -31,8 +31,8 @@ export class AdminlistComponent implements OnInit {
       telephone: "221778555555",
       role: "admin",
       actif: "actif",
-      prenom:"",
-      nom: "",
+      prenom:"Guy",
+      nom: "Essala",
       matricule:"",
       email:"",
       fonction: {
@@ -59,8 +59,8 @@ export class AdminlistComponent implements OnInit {
       telephone: "221778555556",
       role: "admin",
       actif: "actif",
-      prenom:"",
-      nom: "",
+      prenom:"Rokhaya",
+      nom: "Seydi",
       matricule:"",
       email:"",
       fonction: {

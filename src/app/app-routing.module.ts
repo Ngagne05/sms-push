@@ -19,12 +19,17 @@ import { ChangermotdepasseComponent } from './components/dashboard/changermotdep
 import { EditerprofilComponent } from './components/dashboard/editerprofil/editerprofil.component';
 import { EntrepriserechargeComponent } from './components/dashboard/entreprises/entrepriserecharge/entrepriserecharge.component';
 import { TarificationsComponent } from './components/dashboard/entreprises/tarifications/tarifications.component';
+import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
 
 
 const routes: Routes = [
   {
     path: "",
     component: LoginComponent
+  },
+  {
+    path: "reinitpwd",
+    component: ReinitpwdComponent
   },
   {
     path: "dashboard",

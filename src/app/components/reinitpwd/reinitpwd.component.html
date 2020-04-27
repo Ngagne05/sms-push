@@ -1,0 +1,43 @@
+<div class="container-fluid col-sm-12" style="margin: auto;">
+    <div class="row">
+  
+    </div>
+    <div class="container-fluid col-sm-4  rounded mat-elevation-z8" style="margin: auto; margin-top: 10%; padding: 1%; background-color: rgb(23, 13, 156);">
+  
+      <div class="card card-stats mat-elevation-z2" >
+        <div class="card-header card-header-success card-header-icon w3-white">
+         <div class="row">
+            <div style="margin:auto">
+              <div>
+                <h4>Récupération mot de passe</h4>
+              </div>
+            </div>
+         </div>
+          
+        </div>
+        <div class="card-body">
+          <form class="form" >
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control"   required>
+            </div>
+           
+            <div class="row container-fluid" style="margin: auto;">
+              <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Se connecter</button> -->
+              <div style="margin:auto;">
+                <button mat-raised-button style="margin:auto;" color="primary" type="submit" [routerLink]="['dashboard']">Envoyer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+            <div class="row stats container-fluid w3-center" style="margin: auto;">
+                <div class="row" style="margin: auto;">
+                  <a [routerLink]="['']" style="color:rgb(59, 159, 199);">Se connecter</a>
+                </div>
+            </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

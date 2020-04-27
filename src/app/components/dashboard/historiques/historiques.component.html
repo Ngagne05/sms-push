@@ -1,111 +1,129 @@
-
 <div class="row container-fluid" style="margin-top: 4px;margin-bottom: 4px;">
-    <div class="col-sm-8">
-        <div class="mymargin">
-            <mat-form-field>
-                <input type="text" matInput placeholder="RETID">
-            </mat-form-field> 
+  <div class="col-sm-8">
+    <div class="mymargin">
+      <mat-form-field>
+        <input type="text" matInput placeholder="RETID">
+      </mat-form-field>
+    </div>
+    <div class="mymargin ">
+      <mat-form-field style="width:100px;">
+        <input matInput [matDatepicker]="picker" placeholder="Date début">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mymargin ">
+      <mat-form-field style="width:100px;">
+        <input matInput [matDatepicker]="picker2" placeholder="Date fin">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="mymargin">
+      <button mat-raised-button color="primary">rechercher</button>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="" style="float: right;">
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid">
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="Résumé"> 
+      <div class="container-fluid">
+        <div style="float: right;">
+          <button mat-raised-button color="primary" click="exporter1()">Exporter</button>
         </div>
-        <div class="mymargin ">
-            <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker" placeholder="Date début" >
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div class="mymargin ">
-            <mat-form-field style="width:100px;">
-              <input matInput [matDatepicker]="picker2" placeholder="Date fin" >
-              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-          </div>
-
-          <div class="mymargin">
-              <button mat-raised-button color="primary">rechercher</button>
-          </div>
-    </div>
-    <div class="col-sm-4" >
-      <div class="" style="float: right;">
       </div>
-      
-    </div>
-  </div>
-  
-  <div class="row" style="margin-bottom:1%;">
-    <div class="container-fluid col-sm-9">
-      <div class="card col-sm-4 container-fluid" >
-        <table class=" container-fluid">
-          <tbody>
-            <tr>
-              <td> Total SMS Envoyés</td>
-              <td> 100</td>
-            </tr>
-            <tr>
-              <td>SMS Reçus</td>
-              <td> 99</td>
-            </tr>
-            <tr>
-              <td>SMS en cours</td>
-              <td> 1</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="container-fluid col-sm-3">
-      <div style="margin: auto; ">
-        <button (click)="exporter()" mat-raised-button color="primary">Exporter</button>
-      </div>
-    </div>
-  </div>
-  
+      <div class="row container-fluid">
+        <div class="col-sm-6 mat-elevation-z8" style="margin: auto;">
+          <table id="resume" mat-table [dataSource]="dataSource1" class="container-fluid">
 
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row?.id}} </td>
+            </ng-container>
 
-  <div class=" container-fluid">
-    <div class="mat-elevation-z8">
-      <table id="historique" mat-table [dataSource]="dataSource" class="container-fluid">
-  
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-        </ng-container>
-    
-        <!-- Progress Column -->
-        <ng-container matColumnDef="receiver">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Destinataire </th>
-          <td mat-cell *matCellDef="let row"> {{row.receiver}} </td>
-        </ng-container>
-    
-        <!-- Name Column -->
-        <!-- <ng-container matColumnDef="push_id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Push ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.push_id}} </td>
-        </ng-container> -->
-    
-        <!-- Color Column -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.status}} </td>
-        </ng-container>
-    
-        <!-- Color Column -->
-        <ng-container matColumnDef="last_update">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Dernière MAJ </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.last_update}} </td>
-        </ng-container>
-        
-        <!-- Color Column -->
-        <ng-container matColumnDef="ret_id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> RETID </th>
-            <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.ret_id}} </td>
-        </ng-container>
-        
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-        </tr>
-      </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </div>
-  </div>
+           
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="libelle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</th>
+              <td mat-cell *matCellDef="let row" > {{row.libelle}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let row" > {{row.nombre}} </td>
+            </ng-container>
+
+          
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;">
+            </tr>
+          </table>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Accusés">
+      <div class="container-fluid" >
+          <div  style="float: right;">
+            <button (click)="exporter()" mat-raised-button color="primary">Exporter</button>
+          </div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-sm-8 mat-elevation-z8" style="margin: auto;">
+          <table id="historique" mat-table [dataSource]="dataSource" class="container-fluid">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <!-- Progress Column -->
+            <ng-container matColumnDef="receiver">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Destinataire </th>
+              <td mat-cell *matCellDef="let row"> {{row.receiver}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <!-- <ng-container matColumnDef="push_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Push ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.push_id}} </td>
+              </ng-container> -->
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.status}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="last_update">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dernière MAJ </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.last_update}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="ret_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> RETID </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.ret_id}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
