@@ -9,13 +9,13 @@ import { MatTableDataSource } from '@angular/material/table';
 export class TarificationsComponent implements OnInit {
   displayedColumns: string[] = [
     'indicatif',
-    'pays',
+    'operateur',
     'cout_unitaire'
   ];
   data = [
     {
       indicatif:221,
-      pays: "SENEGAL",
+      operateur: "TOUT-SENEGAL",
       cout_unitaire: "250"
     }
   ];
