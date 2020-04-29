@@ -1,44 +1,48 @@
-<div class="container-fluid" style="margin-top: 4px;">
+<div class="container-fluid" style="margin-top: 3%;">
     <div class="container-fluid" style="margin:auto;">
   
       <mat-card class="col-sm-4" style="margin: auto;">
         <mat-card-header class="w3-center">
-          <mat-card-title >Détails Utilisateur</mat-card-title>
-          <!-- <mat-card-subtitle></mat-card-subtitle> -->
+          <mat-card-title >Informations Utilisateur</mat-card-title>
+          <mat-card-subtitle>
+            <div class="container-fluid card">
+              <span>Client: Black Star Technologies</span>
+          </div>
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="container-fluid">
           <table class="table">
             <tr>
-              <th>Prénom</th>
+              <td>Prénom</td>
               <td>{{user.prenom}}</td>
             </tr>
             <tr>
-              <th>Nom</th>
+              <td>Nom</td>
               <td>{{user.nom}}</td>
             </tr>
             <tr>
-              <th>Login</th>
+              <td>Login</td>
               <td>{{user.login}}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <td>Email</td>
                 <td>{{user.email}}</td>
               </tr>
             
             <tr>
-              <th>Matricule</th>
+              <td>Matricule</td>
               <td >{{user.matricule}}</td>
             </tr>
             <tr>
-              <th>Téléphone</th>
+              <td>Téléphone</td>
               <td >{{user.telephone}}</td>
             </tr>
             <tr>
-                <th>Fonction</th>
+                <td>Fonction</td>
                 <td>{{user.fonction?.libelle}}</td>
               </tr>
             <tr>
-              <th>Département</th>
+              <td>Département</td>
               <td >{{user.departement?.libelle}}</td>
             </tr>
             
