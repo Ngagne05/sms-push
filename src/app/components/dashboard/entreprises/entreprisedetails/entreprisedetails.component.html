@@ -1,46 +1,31 @@
-<div class="container-fluid" style="margin-top: 4px;">
+<div class="container-fluid" style="margin-top: 5%;">
     <div class="container-fluid" style="margin:auto;">
   
       <mat-card class="col-sm-4" style="margin: auto;">
         <mat-card-header class="w3-center">
-          <mat-card-title >Détails Entreprise</mat-card-title>
+          <mat-card-title >Informations Client</mat-card-title>
           <!-- <mat-card-subtitle></mat-card-subtitle> -->
         </mat-card-header>
         <mat-card-content class="container-fluid">
-          <table class="table">
+          <table class="">
             <tr>
-              <th>Raison Sociale</th>
+              <td>Raison Sociale</td>
               <td>{{entreprise.raison_sociale}}</td>
             </tr>
             <tr>
-              <th>Adresse</th>
+              <td>Adresse</td>
               <td>{{entreprise.adresse}}</td>
             </tr>
             <tr>
-              <th>Coût unitaire</th>
-              <td>{{entreprise.cout_unitaire}}</td>
-            </tr>
-            <tr>
-                <th>Solde</th>
+                <td>Solde</td>
                 <td>{{entreprise.solde}}</td>
               </tr>
             
             <tr>
-              <th>Code</th>
-              <td >{{entreprise.code}}</td>
-            </tr>
-            <tr>
-              <th>URL DLR</th>
-              <td >{{entreprise.ret_url}}</td>
-            </tr>
-            <tr>
-                <th>Téléphone</th>
+                <td>Téléphone</td>
                 <td>{{entreprise.telephone}}</td>
               </tr>
-            <tr>
-              <th>Login</th>
-              <td >{{entreprise.login}}</td>
-            </tr>
+           
             
           </table>
   
@@ -48,7 +33,6 @@
         <mat-card-actions>
           <button mat-raised-button [routerLink]="['../../']" color="primary">Retourner</button>
   
-          <button mat-raised-button color="warn">Supprimer</button>
         </mat-card-actions>
       </mat-card>
     </div>

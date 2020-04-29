@@ -26,6 +26,13 @@ export class HistoriquesComponent implements OnInit {
   ];
   dataSource1: MatTableDataSource<any>;
 
+  displayedColumns12: string[] = [
+    `id`,
+    `libelle`,
+    `nombre`
+  ];
+  dataSource12: MatTableDataSource<any>;
+
   data: any[] = [
     {
       id: 1,
@@ -57,7 +64,7 @@ export class HistoriquesComponent implements OnInit {
 
     {
       id: "1",
-      libelle: "SMS transmis à la passerelle mais pas encore à l’operateur",
+      libelle: "Transmission en cours",
       nombre: 2
     }, {
 
@@ -98,17 +105,23 @@ export class HistoriquesComponent implements OnInit {
     }, {
 
       id: "14",
-      libelle: "non défini à votre niveau : contacter le provider",
+      libelle: "Non défini : contacter le provider",
       nombre: 0
-    }, {
+    }
+
+
+  ];
+
+  data12: any[] = [
+{
 
       id: "15",
-      libelle: "non défini à votre niveau : contacter le provider",
+      libelle: "non défini : contacter le provider",
       nombre: 0
     }, {
 
       id: "16",
-      libelle: "non défini à votre niveau : contacter le provider",
+      libelle: "Non défini : contacter le provider",
       nombre: 0
     }, {
 
@@ -123,12 +136,12 @@ export class HistoriquesComponent implements OnInit {
     }, {
 
       id: "19",
-      libelle: "non défini à votre niveau : contacter le provider",
+      libelle: "Non défini : contacter le provider",
       nombre: 0
     }, {
 
       id: "20",
-      libelle: "non défini à votre niveau : contacter le provider",
+      libelle: "Non défini : contacter le provider",
       nombre: 0
     }, {
 
@@ -148,6 +161,7 @@ export class HistoriquesComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource1 = new MatTableDataSource<any[]>(this.data1);
+    this.dataSource12 = new MatTableDataSource<any[]>(this.data12);
 
     this.dataSource = new MatTableDataSource<any[]>(this.data);
 
@@ -169,7 +183,7 @@ export class HistoriquesComponent implements OnInit {
     const table = document.getElementById("resume");
     let name = prompt("Donnez le nom du fichier");
     if (name != undefined) {
-      this.exportservice.exportAsExcelFileFromTable(table, headers, headers2, name);
+      this.exportservice.exportAsExcelFile(this.data1.concat(this.data12), headers, headers2, name);
     }
   }
 

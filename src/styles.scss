@@ -14,3 +14,55 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .mat-card,.mat-card-title,.mat-tab-label-content,tbody,body{
       font-size: 12px !important;
   }
+
+
+  button.mat-focus-indicator.mat-icon-button.mat-button-base {
+    font-size:10px !important;
+    height: 10px !important;
+    width: 10px !important;
+    margin: 2%;
+    line-height: 10px;
+ }
+
+ button.mat-focus-indicator.mat-icon-button.mat-button-base i{
+    font-size: 10px !important;
+    height: 10px !important;
+    width: 10px !important;
+    line-height: 10px;
+ }
+
+
+ .mat-radio-outer-circle{
+     height: 10px !important;
+     width: 10px !important;
+     list-style: 10px;
+ }
+ .mat-radio-container{
+    height: 10px !important;
+    width: 10px !important;
+    list-style: 10px;
+}
+.mat-radio-inner-circle{
+    height: 10px !important;
+    width: 10px !important;
+    list-style: 10px;
+}
+
+.mat-focus-indicator.mat-raised-button.mat-button-base{
+    height: 27px !important;
+    line-height: 27px;
+    font-size: 12px;
+    font-weight: normal;
+    
+    span.mat-button-wrapper{
+        height: 20px !important;
+        list-style: 20px !important;
+    };
+
+    mat-icon.mat-icon.notranslate.material-icons{
+        font-size: 12px;
+        height: 12px;
+        line-height: 12px;
+    }
+}
+

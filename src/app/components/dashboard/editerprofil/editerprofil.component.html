@@ -4,7 +4,7 @@
             <form class="form-group container-fluid">
 
                 <mat-card-header>
-                    <mat-card-title>Edition</mat-card-title>
+                    <mat-card-title>Informations du compte</mat-card-title>
                     <!-- <mat-card-subtitle></mat-card-subtitle> -->
                 </mat-card-header>
                 <mat-card-content class="container-fluid">
@@ -23,7 +23,7 @@
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Login" required>
+                                <input matInput placeholder="Login" readonly required>
                             </mat-form-field>
                         </div>
                         <div class="col">
@@ -45,10 +45,10 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Mot de Passe" required>
+                                <input matInput placeholder="Mot de Passe"  required>
                             </mat-form-field>
                         </div>
                         <div class="col">
@@ -56,7 +56,7 @@
                                 <input matInput placeholder="Confirmer Mot de Passe" required>
                             </mat-form-field>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
@@ -76,11 +76,14 @@
 
 
                 </mat-card-content>
-                <mat-card-actions>
-                    <button type="button" mat-raised-button (click)="goBack()"
+                <mat-card-actions   >
+                    <div class="container-fluid" style="margin: auto;">
+                        <button mat-raised-button color="warn" *ngIf="preview" (click)="goBack()" >Retourner</button>
+                    <button *ngIf="!preview" type="button" mat-raised-button (click)="preview=true"
                         color="warn">Annuler</button>
-
-                    <button mat-raised-button type="submit" color="primary">Enregistrer</button>
+                    <button mat-raised-button *ngIf="preview" type="submit" color="primary" (click)="preview=false">Editer</button>
+                    <button mat-raised-button *ngIf="!preview" type="submit" color="primary">Enregistrer</button>
+                    </div>
                 </mat-card-actions>
             </form>
         </mat-card>

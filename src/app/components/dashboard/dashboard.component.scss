@@ -44,12 +44,22 @@ button{
 }
 
 
+// .btnoption{
+//   background:  linear-gradient(to left, rgb(108, 108, 255),rgb(31, 31, 158));
+//   color: white;
+//   width: 100%;
+//   height: 35px;
+//   border: solid 1px rgb(7, 7, 80);
+//   border-radius: 5px;
+//   font-weight: normal;
+// }
+
 .btnoption{
-  background:  linear-gradient(to left, rgb(108, 108, 255),rgb(31, 31, 158));
+  background:  linear-gradient(to right, rgb(2, 130, 250),rgb(4, 50, 201));
   color: white;
   width: 100%;
   height: 35px;
-  border: solid 1px rgb(7, 7, 80);
+  border: solid 1px rgb(22, 150, 255);
   border-radius: 5px;
   font-weight: normal;
 }

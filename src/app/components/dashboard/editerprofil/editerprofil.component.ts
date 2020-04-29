@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./editerprofil.component.scss']
 })
 export class EditerprofilComponent implements OnInit {
-
+  preview = true;
   constructor(private location: Location) { }
 
   ngOnInit(): void {

@@ -1,0 +1,12 @@
+table{
+    width: 100%;
+    tbody{
+        th{
+            font-weight: normal !important;
+            font-style: normal !important;
+        };
+        tr{
+            border-bottom: solid 1px gray;
+        }
+    }
+}

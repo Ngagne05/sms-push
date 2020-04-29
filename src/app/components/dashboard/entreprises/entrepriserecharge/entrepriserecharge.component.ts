@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./entrepriserecharge.component.scss']
 })
 export class EntrepriserechargeComponent implements OnInit {
-
+  date1 = new Date();
   constructor(private location: Location) { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-<div class="row container-fluid" style="margin-top: 4px;margin-bottom: 4px;">
+<div class="row container-fluid" style="margin-top:3%;margin-bottom: 4px;">
   <div class="col-sm-8">
     <div class="mymargin">
       <mat-form-field>
@@ -31,16 +31,17 @@
   </div>
 </div>
 <div class="container-fluid">
-  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
     <mat-tab label="Résumé"> 
-      <div class="container-fluid">
-        <div style="float: right;">
+      <div class="container-fluid" style="margin-top: 1%;">
+        <div style="margin-left: 89%;">
           <button mat-raised-button color="primary" (click)="exporter1()">Exporter</button>
         </div>
       </div>
-      <div class="row container-fluid">
-        <div class="col-sm-6 mat-elevation-z8" style="margin: auto;">
-          <table id="resume" mat-table [dataSource]="dataSource1" class="container-fluid">
+      <div class="row container-fluid" style="margin-bottom: 2%; margin-top: 2%;">
+        <mat-divider></mat-divider>
+        <div class="col-sm-5 container-fluid mat-elevation-z8" style="margin: auto;">
+          <table  mat-table [dataSource]="dataSource1" class="container-fluid">
 
             <!-- ID Column -->
             <ng-container matColumnDef="id">
@@ -69,15 +70,45 @@
             </tr>
           </table>
         </div>
+        <div class="col-sm-5 container-fluid mat-elevation-z8">
+          <table  mat-table [dataSource]="dataSource12" class="container-fluid">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row?.id}} </td>
+            </ng-container>
+
+           
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="libelle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</th>
+              <td mat-cell *matCellDef="let row" > {{row.libelle}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let row" > {{row.nombre}} </td>
+            </ng-container>
+
+          
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns12"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns12;">
+            </tr>
+          </table>
+        </div>
       </div>
     </mat-tab>
     <mat-tab label="Détails">
-      <div class="container-fluid" >
-          <div  style="float: right;">
+      <div class="container-fluid" style="margin-top: 1%;" >
+          <div  style="margin-left: 89%;">
             <button (click)="exporter()" mat-raised-button color="primary">Exporter</button>
           </div>
       </div>
-      <div class="row container-fluid">
+      <div class="row container-fluid" style="margin: auto; margin-bottom: 2%;margin-top: 2%;">
         <div class="col-sm-8 mat-elevation-z8" style="margin: auto;">
           <table id="historique" mat-table [dataSource]="dataSource" class="container-fluid">
 
