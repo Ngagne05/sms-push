@@ -1,0 +1,100 @@
+<div class="row container-fluid" style="margin-top:1%;">
+    <div class="col-sm-4">
+  
+      <div class="container-fluid">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="container-fluid">
+                  Départements
+                </div>
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="w3-center">
+              <mat-form-field>
+                <input type="text" matInput placeholder="Ajouter un département" [(ngModel)]="nom_departement">
+              </mat-form-field>
+              <button mat-icon-button matTooltip="ajouter" (click)="addDep()"><i
+                  class="fa fa-plus w3-text-blue"></i></button>
+              <button mat-icon-button matTooltip="annuler" (click)="annulerDep()"><i
+                  class="fa fa-window-close w3-text-red"></i></button>
+  
+            </div>
+            <div class="">
+              <table class="mytable">
+                <thead>
+                  <th width="90%" style="font-weight:inherit;">Nom</th>
+                  <th width="10%" style="font-weight:inherit;">Actions</th>
+                </thead>
+                <tbody class="w3-white">
+                  <tr *ngFor="let d of departements">
+                    <td class="container-fluid">{{d?.nom}}</td>
+                    <td> <button mat-icon-button> <i class="fa fa-edit" (click)="editDep(d)"></i></button></td>
+                    <td> <button mat-icon-button> <i class="fa fa-trash w3-text-red" (click)="deleteDep(d)"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+     
+  
+    </div>
+    <div class="col-sm-4">
+      <div class="container-fluid">
+  
+      
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="container-fluid">
+                Fonctions
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+  
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class=" w3-center">
+            <mat-form-field>
+              <input type="text" matInput placeholder="Ajouter une fonction" [(ngModel)]="nom_fonction">
+            </mat-form-field>
+            <button mat-icon-button matTooltip="ajouter" (click)="addFonc()"><i
+                class="fa fa-plus w3-text-blue"></i></button>
+            <button mat-icon-button matTooltip="annuler" (click)="annulerFonc()"><i
+                class="fa fa-window-close w3-text-red"></i></button>
+  
+          </div>
+          <div class="">
+            <table class="mytable">
+              <thead>
+                <th width="90%" style="font-weight:inherit;">Nom</th>
+                <th width="10%" style="font-weight:inherit;">Actions</th>
+              </thead>
+              <tbody class="w3-white">
+                <tr *ngFor="let f of fonctions">
+                  <td class="container-fluid">{{f?.nom}}</td>
+                  <td> <button mat-icon-button> <i class="fa fa-edit" (click)="editFonc(f)"></i></button></td>
+                  <td> <button mat-icon-button> <i class="fa fa-trash w3-text-red" (click)="deleteFonc(f)"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      </div>
+     
+    </div>
+    
+  
+  
+  
+    
+  </div>

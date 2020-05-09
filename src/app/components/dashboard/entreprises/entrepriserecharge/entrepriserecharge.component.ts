@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-entrepriserecharge',
@@ -8,8 +10,14 @@ import { Location } from '@angular/common';
 })
 export class EntrepriserechargeComponent implements OnInit {
   date1 = new Date();
-  constructor(private location: Location) { }
+  constructor(private location: Location, private fb: FormBuilder, private clientservice: ClientService) { }
 
+  formGroup: FormGroup = this.fb.group({
+    montant: ['', Validators.required],
+    moyen: ['', Validators.required],
+    date_reglement: ['', Validators.required],
+    raison_sociale: ['', Validators.required],
+  })
   ngOnInit(): void {
   }
 
@@ -17,4 +25,20 @@ export class EntrepriserechargeComponent implements OnInit {
     this.location.back();
   }
 
+  onSubmit(){
+    this.formGroup.controls['raison_sociale'].setValue("BST");
+
+    if(this.formGroup.valid){
+      this.clientservice.rechargeCompteEntreprise(this.formGroup.value).subscribe(response => {
+        console.log(response);
+        alert(response.data.message);
+        if ( response.data.code == 200)
+        this.location.back();
+      }, error => {
+        console.error(error);
+      });
+    }else{
+      alert('Veuillez remplir tous les champs.');
+    }
+  }
 }

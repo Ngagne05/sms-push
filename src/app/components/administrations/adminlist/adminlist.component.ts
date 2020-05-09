@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { Location } from '@angular/common';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-adminlist',
@@ -81,9 +82,12 @@ export class AdminlistComponent implements OnInit {
       }
     }
   ];
-  constructor(private location: Location) { }
+  constructor(private location: Location, private userservice : UsersService) { }
 
   ngOnInit(): void {
+    this.userservice.listAdmin().subscribe((response)=>{
+      console.log(response)
+    },(error)=>{});
     this.dataSource = new MatTableDataSource<Utilisateur>(this.data);
 
   }

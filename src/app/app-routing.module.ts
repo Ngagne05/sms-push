@@ -20,6 +20,8 @@ import { EditerprofilComponent } from './components/dashboard/editerprofil/edite
 import { EntrepriserechargeComponent } from './components/dashboard/entreprises/entrepriserecharge/entrepriserecharge.component';
 import { TarificationsComponent } from './components/dashboard/entreprises/tarifications/tarifications.component';
 import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
+import { AuthGuard } from './auth/auth.guard';
+import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: "entreprises",
@@ -97,6 +100,10 @@ const routes: Routes = [
       {
         path: "logs",
         component: LogsComponent
+      },
+      {
+        path: "parametres",
+        component: ParametresComponent
       },
       {
         path: "send",

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Entreprise } from 'src/app/models/entreprise';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-entrepriselist',
@@ -11,47 +12,27 @@ import { MatPaginator } from '@angular/material/paginator';
 export class EntrepriselistComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
-    'raison_sociale',
+    'raisonsociale',
     'adresse',
     'solde',
+    'telephone',
     'actions'
   ];
   dataSource: MatTableDataSource<Entreprise>;
 
-  data: Entreprise[] = [
-    {
-      id : "1",
-      raison_sociale: "BST",
-      adresse: "SICAP FOIRE",
-      cout_unitaire: "25",
-      solde:"1500",
-      telephone: "2217854444",
-    
-    },
-    {
-      id : "2",
-      raison_sociale: "LONASE",
-      adresse: "SICAP FOIRE",
-      cout_unitaire: "25",
-      solde:"1500",
-      telephone: "2217854444",
-      
-    },
-    {
-      id : "3",
-      raison_sociale: "BNDE",
-      adresse: "SICAP FOIRE",
-      cout_unitaire: "25",
-      solde:"1500",
-      telephone: "2217854444",
-     
-    }
-  ]
+  
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  constructor() { }
+  constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Entreprise>(this.data);
+    this.clientService.listEntreprise().subscribe(response =>{
+      console.log(response);
+      this.dataSource = new MatTableDataSource<Entreprise>(response);
+      this.dataSource.paginator = this.paginator;
+    }, error => {
+      console.log(error);
+    });
+   
   }
 
 }

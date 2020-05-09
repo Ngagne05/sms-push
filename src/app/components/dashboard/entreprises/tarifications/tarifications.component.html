@@ -50,7 +50,7 @@
      <div class="col-sm-4">
         <div class="form">
             <mat-card  style="margin: auto;">
-                <form class="form-group container-fluid">
+                <form class="form-group container-fluid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     
                     <mat-card-header>
                         <mat-card-title>Destination</mat-card-title>
@@ -60,14 +60,14 @@
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="number" matInput placeholder="Indicatif" required>
+                                    <input type="number" matInput placeholder="Indicatif" formControlName="indicatif" required>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="text" matInput placeholder="Opérateur" required>
+                                    <input type="text" matInput placeholder="Opérateur" formControlName="operateur" required>
                                 </mat-form-field>
                             </div>
                            
@@ -76,7 +76,7 @@
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="number" matInput placeholder="Coût Unitaire" required>
+                                    <input type="number" matInput placeholder="Coût Unitaire" formControlName="cout_unitaire" required>
                                 </mat-form-field>
                             </div>
                         </div>

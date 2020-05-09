@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialAppModule} from './material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EntrepriselistComponent } from './components/dashboard/entreprises/entrepriselist/entrepriselist.component';
 import { EntreprisecreateComponent } from './components/dashboard/entreprises/entreprisecreate/entreprisecreate.component';
 import { EntrepriserechargeComponent } from './components/dashboard/entreprises/entrepriserecharge/entrepriserecharge.component';
@@ -30,6 +30,13 @@ import { TarificationsComponent } from './components/dashboard/entreprises/tarif
 import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
 import { MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
 import { MyDateFormat } from './utils/my-date-format';
+import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
+import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -53,7 +60,9 @@ import { MyDateFormat } from './utils/my-date-format';
     ChangermotdepasseComponent,
     EditerprofilComponent,
     TarificationsComponent,
-    ReinitpwdComponent
+    ReinitpwdComponent,
+    ParametresComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -62,12 +71,21 @@ import { MyDateFormat } from './utils/my-date-format';
     AppRoutingModule,
     MaterialAppModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['*']
+    }})
   ],
   providers: [
     {
-      provide: MAT_DATE_LOCALE, useValue: 'fr'
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptorInterceptor,
+      multi: true
     },
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'fr'
+    },JwtHelperService,
     {provide: DateAdapter, useClass: MyDateFormat},
     ExcelserviceService],
   bootstrap: [AppComponent]

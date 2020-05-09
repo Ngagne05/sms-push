@@ -13,7 +13,7 @@
           <mat-icon>edit</mat-icon>
           <span>Mot de passe</span>
         </button>
-        <button mat-menu-item [routerLink]="['/']">
+        <button mat-menu-item (click) = "logout()">
           <mat-icon>exit_to_app</mat-icon>
           <span>Déconnexion</span>
         </button>
@@ -49,6 +49,7 @@
     <button  class="btnoption" style="width: 100%;" [routerLink]="['entreprises']" [routerLinkActive]="['btnoptionactive']">Clients</button>
     <button  class="btnoption" style="width: 100%;" [routerLink]="['utilisateurs']" [routerLinkActive]="['btnoptionactive']">Admins</button>
     <button  class="btnoption" style="width: 100%;" [routerLink]="['logs']" [routerLinkActive]="['btnoptionactive']">Logs</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['parametres']" [routerLinkActive]="['btnoptionactive']">Paramètres</button>
 
    </div>
 
