@@ -99,20 +99,24 @@ export class ParametresComponent implements OnInit {
   }
 
   deleteFonc(fonction) {
-    return this.userservice.deleteFonc(fonction).subscribe( data => {
+      if(confirm("Voulez-vous vraiment supprimer cette fonction?"))
+     this.userservice.deleteFonc(fonction.id).subscribe( data => {
+      alert(data.data.message);
       this.userservice.getFoncs().subscribe( d => {
         this.fonctions = d.data;
       });
-    });
+    },error => alert(error.message));
   }
 
  
 
   deleteDep(departement) {
-    return this.userservice.deleteDep(departement).subscribe( data => {
+      if(confirm("Voulez-vous vraiment supprimer ce département?"))
+     this.userservice.deleteDep(departement.id).subscribe( data => {
+      alert(data.data.message);
       this.userservice.getDeps().subscribe( d => {
         this.departements = d.data;
-      });
+      },error=>alert(error.message));
     });
   }
 

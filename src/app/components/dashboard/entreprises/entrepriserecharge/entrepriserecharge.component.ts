@@ -16,7 +16,6 @@ export class EntrepriserechargeComponent implements OnInit {
     montant: ['', Validators.required],
     moyen: ['', Validators.required],
     date_reglement: ['', Validators.required],
-    raison_sociale: ['', Validators.required],
   })
   ngOnInit(): void {
   }
@@ -26,10 +25,9 @@ export class EntrepriserechargeComponent implements OnInit {
   }
 
   onSubmit(){
-    this.formGroup.controls['raison_sociale'].setValue("BST");
-
+    let identreprise = 18;
     if(this.formGroup.valid){
-      this.clientservice.rechargeCompteEntreprise(this.formGroup.value).subscribe(response => {
+      this.clientservice.rechargeCompteEntreprise(identreprise,this.formGroup.value).subscribe(response => {
         console.log(response);
         alert(response.data.message);
         if ( response.data.code == 200)

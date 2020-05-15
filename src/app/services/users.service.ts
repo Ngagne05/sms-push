@@ -11,11 +11,11 @@ export class UsersService {
   readonly api_url = environment.api_url;
   readonly api_login = this.api_url + "connexion";
   readonly api_logout = this.api_url + "deconnexion";
-  readonly api_list_admin = this.api_url + "utilisateur/all";
-  readonly api_create_departement = this.api_url + "departement";
-  readonly api_create_fonction = this.api_url + "fonction";
-  readonly api_all_departement = this.api_url + "departement/all";
-  readonly api_all_fonction = this.api_url + "fonction/all";
+  readonly api_list_admin = this.api_url + "utilisateurs";
+  readonly api_create_departement = this.api_url + "departements/departement";
+  readonly api_create_fonction = this.api_url + "fonctions/fonction";
+  readonly api_all_departement = this.api_url + "departements";
+  readonly api_all_fonction = this.api_url + "fonctions";
 
   constructor(private http: HttpClient) { }
 
@@ -45,8 +45,8 @@ export class UsersService {
   updateFonc(fonction: any) {
     return this.http.post<any>("",fonction);
   }
-  deleteFonc(fonction: any) {
-    return this.http.post<any>("",fonction);
+  deleteFonc(idfonction) {
+    return this.http.delete<any>(this.api_all_fonction+`/${idfonction}`);
   }
   getFoncs() {
     return this.http.get<any>(this.api_all_fonction);
@@ -54,7 +54,7 @@ export class UsersService {
   getDeps() {
     return this.http.get<any>(this.api_all_departement);
   }
-  deleteDep(departement: any) {
-    return this.http.post<any>("",departement);
+  deleteDep(iddepartement) {
+    return this.http.delete<any>(this.api_all_departement + `/${iddepartement}`);
   }
 }

@@ -14,7 +14,8 @@ export class TarificationsComponent implements OnInit {
   displayedColumns: string[] = [
     'indicatif',
     'operateur',
-    'cout_unitaire'
+    'coutsms',
+    'action'
   ];
   data = [
     {
@@ -29,11 +30,15 @@ export class TarificationsComponent implements OnInit {
     indicatif: ['', Validators.required],
     operateur: ['', Validators.required],
     cout_unitaire: ['', Validators.required],
-    raison_sociale: ['', Validators.required],
 
   })
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.data);
+    this.clientservice.listeTarif(18).subscribe(response =>{
+      this.dataSource = new MatTableDataSource(response);
+
+    }, error => {
+
+    });
   }
 
   goBack(){
@@ -41,10 +46,10 @@ export class TarificationsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.formGroup.controls['raison_sociale'].setValue("BST");
 
+    let identreprise = 18;
     if(this.formGroup.valid){
-      this.clientservice.createTarification(this.formGroup.value).subscribe(response => {
+      this.clientservice.createTarification(identreprise,this.formGroup.value).subscribe(response => {
         console.log(response);
         alert(response.data.message);
         
@@ -54,5 +59,16 @@ export class TarificationsComponent implements OnInit {
     }else{
       alert('Veuillez remplir tous les champs.');
     }
+  }
+
+  supprimer(tarif){
+    if(confirm("Voulez vous vraiment supprimer cette destination")){
+      this.clientservice.supprimerTarif(tarif.id).subscribe((response:any) => {
+        alert(response.data.message);
+      }, error => {
+        alert(error.message);
+      });
+    }
+
   }
 }

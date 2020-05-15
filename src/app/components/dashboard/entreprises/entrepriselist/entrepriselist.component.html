@@ -58,7 +58,7 @@
           </button>
 
          
-          <button matTooltip="Supprimer" mat-icon-button color="warn">
+          <button matTooltip="Supprimer" (click)="delete(element.id)" mat-icon-button color="warn">
             <i class="fa fa-trash"></i>
           </button>
           <button matTooltip="Utilisateurs" [routerLink]="['users',element.id]" mat-icon-button color="primary">

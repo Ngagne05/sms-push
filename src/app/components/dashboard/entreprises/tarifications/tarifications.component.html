@@ -17,23 +17,17 @@
                 </ng-container>
             
                 <!-- Name Column -->
-                <ng-container matColumnDef="cout_unitaire">
+                <ng-container matColumnDef="coutsms">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Cout Unitaire </th>
-                  <td mat-cell *matCellDef="let row"> {{row.cout_unitaire}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.coutsms}} </td>
                 </ng-container>
             
                                
-                <ng-container matColumnDef="actions">
+                <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef class="w3-center"> Actions </th>
                   <td mat-cell *matCellDef="let element" class="w3-center">
-                      <button matTooltip="détail" mat-icon-button >
-                          <i class="fa fa-eye"></i>
-                      </button>
-                      <button matTooltip="éditer" mat-icon-button color="primary" >
-                          <i class="fa fa-edit"></i>
-                      </button>
-                      
-                      <button matTooltip="supprimer" mat-icon-button color="warn">
+                    
+                      <button matTooltip="supprimer" (click)="supprimer(element)" mat-icon-button color="warn">
                           <i class="fa fa-trash"></i>
                       </button>
                      

@@ -35,4 +35,14 @@ export class EntrepriselistComponent implements OnInit {
    
   }
 
+  delete(idclient){
+    if(confirm("Voulez-vous supprimer ce client?"))
+    this.clientService.delete(idclient).subscribe(response => {
+      alert(response.data.message);
+    },
+      error => {
+        alert(error.message);
+      }
+    );
+  }
 }
