@@ -22,6 +22,7 @@ import { TarificationsComponent } from './components/dashboard/entreprises/tarif
 import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
+import { ReinitpwdcodeComponent } from './components/reinitpwdcode/reinitpwdcode.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,9 @@ const routes: Routes = [
   {
     path: "reinitpwd",
     component: ReinitpwdComponent
+  },{
+    path: "code",
+    component: ReinitpwdcodeComponent
   },
   {
     path: "dashboard",

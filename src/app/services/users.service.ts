@@ -44,8 +44,22 @@ export class UsersService {
   }
 
   unlock(iduser){
-    return this.http.get<any>(this.api_url + `utilisateurs/${iduser}/unlock`)
+    return this.http.get<any>(this.api_url + `utilisateurs/${iduser}/unlock`);
   }
+
+  changePassword(changepwd){
+    return this.http.post<any>(this.api_url + `utilisateur/password/edit`,changepwd);
+  }
+
+
+  forgetPassword(email){
+    return this.http.post<any>(this.api_url + `utilisateur/password/forget`,{email});
+  }
+
+  resetPassword(data){
+    return this.http.post<any>(this.api_url + `utilisateur/password/reset`,data);
+  }
+
   createDep(nom_departement: any) {
     return this.http.post<any>(this.api_create_departement,{nom_departement:nom_departement});
   }

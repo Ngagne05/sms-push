@@ -34,6 +34,7 @@ import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
 import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
 import { InternationalPhoneModule } from 'ngx-intl-phone';
+import { ReinitpwdcodeComponent } from './components/reinitpwdcode/reinitpwdcode.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -63,6 +64,7 @@ export function tokenGetter() {
     TarificationsComponent,
     ReinitpwdComponent,
     ParametresComponent,
+    ReinitpwdcodeComponent,
     
   ],
   imports: [

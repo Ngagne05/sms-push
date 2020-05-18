@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 10%;">
     <div class="form">
         <mat-card class="col-sm-3" style="margin: auto;">
-            <form class="form-group container-fluid">
+            <form class="form-group container-fluid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
                 <mat-card-header>
                     <mat-card-title>Changement Mot de passe</mat-card-title>
@@ -11,14 +11,14 @@
                     <div class="form-row">
                         <div class="row" style="margin: auto;">
                             <mat-form-field>
-                                <input type="password" matInput placeholder="Ancien mot de passe" required>
+                                <input type="password" formControlName="old_password" matInput placeholder="Ancien mot de passe" required>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="row" style="margin: auto;">
                             <mat-form-field>
-                                <input type="password" matInput placeholder="Nouveau mot de passe" required>
+                                <input type="password" formControlName="new_password" matInput placeholder="Nouveau mot de passe" required>
                             </mat-form-field>
                         </div>
                        
@@ -27,7 +27,7 @@
                     <div class="form-row">
                         <div class="row" style="margin: auto;">
                             <mat-form-field>
-                                <input type="password" matInput placeholder="Confirmer mot de passe" required>
+                                <input type="password" formControlName="password_confirmation" matInput placeholder="Confirmer mot de passe" required>
                             </mat-form-field>
                         </div>
                     </div>
