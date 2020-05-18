@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Entreprise } from 'src/app/models/entreprise';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-entreprisedetails',
@@ -9,7 +10,7 @@ import { Entreprise } from 'src/app/models/entreprise';
 })
 export class EntreprisedetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private clientservice: ClientService) { }
 
   data: Entreprise[] = [
     {
@@ -43,9 +44,11 @@ export class EntreprisedetailsComponent implements OnInit {
   entreprise;
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.data.forEach(element => {
-        if (element.id == params.get("id")) {this.entreprise = element;  }
-      });
+      this.clientservice.getByIdClient(params.get("id")).subscribe(response =>{
+        this.entreprise = response
+      }, error => {
+        alert(error.message);
+      })
     });
   }
 

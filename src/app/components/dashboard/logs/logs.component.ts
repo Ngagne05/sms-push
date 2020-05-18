@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { DataService } from 'src/app/services/data.service';
+import * as moment from 'moment';
+import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-logs',
   templateUrl: './logs.component.html',
@@ -40,10 +42,30 @@ export class LogsComponent implements OnInit {
       entreprise: "bst", 
     }
   ]
-  constructor() { }
+  entreprises: any;
+  entreprise; 
+  
+  constructor(private datasevice: DataService,private clientservice: ClientService) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any[]>(this.data);
+    
+    // this.dataSource = new MatTableDataSource<any[]>(this.data);
+    this.getLogs(localStorage.getItem('etps'));
+    this.getEvenements();
+    this.clientservice.listEntreprise().subscribe(response => {
+      this.entreprises = response;
+    });
   }
 
+  getLogs(idclient){
+    this.datasevice.logs(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+      this.dataSource = new MatTableDataSource<any[]>(response);
+    });
+  }
+
+  getEvenements(){
+    this.datasevice.evenements().subscribe(response => {
+      console.log(response);
+    })
+  }
 }

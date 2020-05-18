@@ -3,7 +3,12 @@
     <div class="col-sm-8">
         <div class="mymargin">
             <mat-form-field>
-                <input type="text" matInput placeholder="Entreprise">
+                <mat-label>Client</mat-label>
+                <mat-select [(ngModel)]="entreprise" name="entreprise" >
+                  <mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
+                    {{entreprise.raisonsociale}}
+                  </mat-option>
+                </mat-select>
             </mat-form-field> 
         </div>
         <div class="mymargin ">
@@ -22,7 +27,7 @@
         </div>
 
           <div class="mymargin">
-              <button mat-raised-button color="primary">rechercher</button>
+              <button mat-raised-button color="primary" (click)="rechercher()">rechercher</button>
           </div>
     </div>
     <div class="col-sm-4" >

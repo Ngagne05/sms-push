@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from 'src/app/models/utilisateur';
+import { ClientService } from 'src/app/services/client.service';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-usersentreprisesdetails',
@@ -8,37 +11,24 @@ import { Utilisateur } from 'src/app/models/utilisateur';
 })
 export class UsersentreprisesdetailsComponent implements OnInit {
 
-  user:Utilisateur = {
-    id: "1",
-    login: "guy",
-    password: "",
-    telephone: "221778555555",
-    role: "admin",
-    actif: "actif",
-    prenom:"Guy",
-    nom: "Essala",
-    matricule:"123456",
-    email:"guy@bst.com",
-    fonction: {
-      id:"1",
-      libelle:"Ing. Informatique"
-    },
-    departement:{
-      id:"1",
-      libelle:"Informatique"
-    },
-    entreprise:{
-      id: "1",
-      raison_sociale:"BST",
-      adresse:"",
-      cout_unitaire:"",
-      solde:"",
-      telephone:""
-    }
-  };
-  constructor() { }
+  
+  entreprise;
+  user;
+  idclient;
+  iduser;
+  constructor(private userservice: UsersService, private clientService: ClientService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.idclient = params.get("id");
+      this.iduser = params.get("user");
+      this.clientService.getByIdClient(this.idclient).subscribe(response => {
+        this.entreprise = response;
+      });
+      this.userservice.getUserById(this.iduser).subscribe(response => {
+        this.user = response;
+      });
+    })
   }
 
 

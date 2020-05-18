@@ -6,7 +6,7 @@
           <mat-card-title >Informations Utilisateur</mat-card-title>
           <mat-card-subtitle>
             <div class="container-fluid card">
-              <span>Client: Black Star Technologies</span>
+              <span>CLIENT: {{entreprise?.raisonsociale}}</span>
           </div>
           </mat-card-subtitle>
         </mat-card-header>
@@ -14,43 +14,47 @@
           <table class="table">
             <tr>
               <td>Prénom</td>
-              <td>{{user.prenom}}</td>
+              <td>{{user?.prenom}}</td>
             </tr>
             <tr>
               <td>Nom</td>
-              <td>{{user.nom}}</td>
+              <td>{{user?.nom}}</td>
             </tr>
             <tr>
               <td>Login</td>
-              <td>{{user.login}}</td>
+              <td>{{user?.login}}</td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td>{{user.email}}</td>
+                <td>{{user?.email}}</td>
               </tr>
             
             <tr>
               <td>Matricule</td>
-              <td >{{user.matricule}}</td>
+              <td >{{user?.matricule}}</td>
             </tr>
             <tr>
               <td>Téléphone</td>
-              <td >{{user.telephone}}</td>
+              <td >{{user?.telephone}}</td>
             </tr>
             <tr>
                 <td>Fonction</td>
-                <td>{{user.fonction?.libelle}}</td>
+                <td>{{user?.fonction}}</td>
               </tr>
             <tr>
               <td>Département</td>
-              <td >{{user.departement?.libelle}}</td>
+              <td >{{user?.departement}}</td>
+            </tr>
+            <tr>
+              <td>Role</td>
+              <td >{{user?.role}}</td>
             </tr>
             
           </table>
   
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button [routerLink]="['../']" color="primary">Retourner</button>
+          <button mat-raised-button [routerLink]="['../../']" color="primary">Retourner</button>
   
           <button mat-raised-button color="warn">Supprimer</button>
         </mat-card-actions>

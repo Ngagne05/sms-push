@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
         const token = response?.jwt;
         if(token){
           localStorage.setItem('token',token);
+          localStorage.setItem('user',response.id);
+          localStorage.setItem('login',response.login);
           localStorage.setItem('raison_sociale', response.raison_sociale);
           this.router.navigate(['dashboard/send']);
         }

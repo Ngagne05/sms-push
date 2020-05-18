@@ -13,11 +13,19 @@ export class DashboardComponent implements OnInit {
     login :"guy",
     solde: "80 000",
   };
+  user;
   constructor(private userservice: UsersService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getUserInfos();
   }
 
+  getUserInfos(){
+    this.userservice.getUserByLogin(localStorage.getItem('login')).subscribe(response => {
+      this.user = response;
+      localStorage.setItem('etps',this.user.entreprise.id);
+    });
+  }
 
   logout(){
     this.userservice.logout().subscribe(response => {}, error => { console.log(error)});

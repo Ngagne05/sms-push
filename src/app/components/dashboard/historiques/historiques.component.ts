@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExcelserviceService } from 'src/app/shareservice/excelservice.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-historiques',
@@ -157,13 +158,18 @@ export class HistoriquesComponent implements OnInit {
 
 
   ];
-  constructor(private exportservice: ExcelserviceService) { }
+  entreprises: any;
+  entreprise;
+  constructor(private exportservice: ExcelserviceService,private clientservice: ClientService) { }
 
   ngOnInit(): void {
     this.dataSource1 = new MatTableDataSource<any[]>(this.data1);
     this.dataSource12 = new MatTableDataSource<any[]>(this.data12);
 
     this.dataSource = new MatTableDataSource<any[]>(this.data);
+    this.clientservice.listEntreprise().subscribe(response=>{
+      this.entreprises = response;
+    });
 
   }
 
@@ -187,5 +193,7 @@ export class HistoriquesComponent implements OnInit {
     }
   }
 
+
+  
 
 }

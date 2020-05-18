@@ -26,8 +26,10 @@
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef class="w3-center"> Actions </th>
                   <td mat-cell *matCellDef="let element" class="w3-center">
-                    
-                      <button matTooltip="supprimer" (click)="supprimer(element)" mat-icon-button color="warn">
+                    <button type="button" matTooltip="edit" (click)="edit(element)" mat-icon-button color="primary">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                      <button type="button" matTooltip="supprimer" (click)="supprimer(element)" mat-icon-button color="warn">
                           <i class="fa fa-trash"></i>
                       </button>
                      
@@ -54,14 +56,14 @@
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="number" matInput placeholder="Indicatif" formControlName="indicatif" required>
+                                    <input type="number" matInput placeholder="Indicatif" formControlName="indicatif"  required>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="row" style="margin: auto;">
                                 <mat-form-field>
-                                    <input type="text" matInput placeholder="Opérateur" formControlName="operateur" required>
+                                    <input type="text" matInput placeholder="Opérateur" formControlName="operateur"  required>
                                 </mat-form-field>
                             </div>
                            
@@ -80,9 +82,9 @@
                     </mat-card-content> 
                     <mat-card-actions >
                         <button type="button" mat-raised-button 
-                            color="warn" (click)="goBack()">Annuler</button>
+                            color="warn" (click)="isedit?annulerEdit():goBack()">Annuler</button>
     
-                        <button mat-raised-button type="submit" color="primary">Enregistrer</button>
+                        <button mat-raised-button type="submit" color="primary">{{isedit?'Modifier':'Enregistrer'}}</button>
                     </mat-card-actions>
                 </form>
             </mat-card>

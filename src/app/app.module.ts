@@ -33,6 +33,7 @@ import { MyDateFormat } from './utils/my-date-format';
 import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
 import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
+import { InternationalPhoneModule } from 'ngx-intl-phone';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -75,7 +76,8 @@ export function tokenGetter() {
     JwtModule.forRoot({config: {
       tokenGetter: tokenGetter,
       whitelistedDomains: ['*']
-    }})
+    }}),
+    InternationalPhoneModule
   ],
   providers: [
     {

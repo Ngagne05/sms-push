@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { Location } from '@angular/common';
 import { UsersService } from 'src/app/services/users.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-adminlist',
@@ -82,13 +83,13 @@ export class AdminlistComponent implements OnInit {
       }
     }
   ];
-  constructor(private location: Location, private userservice : UsersService) { }
+  constructor(private location: Location, private userservice : UsersService,private clientservice: ClientService) { }
 
   ngOnInit(): void {
-    this.userservice.listAdmin().subscribe((response)=>{
-      console.log(response)
-    },(error)=>{});
-    this.dataSource = new MatTableDataSource<Utilisateur>(this.data);
+    this.clientservice.listUsersEntreprise(localStorage.getItem('etps')).subscribe(response => {
+      this.dataSource = new MatTableDataSource<Utilisateur>(response);
+
+    });
 
   }
 

@@ -74,7 +74,7 @@ const routes: Routes = [
         component: UsersentreprisesComponent
       },
       {
-        path: "entreprises/users/:id/details",
+        path: "entreprises/users/:id/details/:user",
         component: UsersentreprisesdetailsComponent
       },{
         path: "utilisateurs",

@@ -1,63 +1,65 @@
 <div class="row container-fluid" style="margin-top: 5%;">
     <!-- send sms  -->
-    <div class="container-fluid col-sm-4 mat-elevation-z2 card" style="padding-bottom: 2%;">
-        <div class="container-fluid row" style="margin-top: 2%;">
-            <div style="margin: auto;">
-                <h4>Envoie de SMS</h4>
+    <form class="container-fluid" (ngSubmit)="onSubmit()">
+        <div class="container-fluid col-sm-4 mat-elevation-z2 card" style="padding-bottom: 2%;">
+            <div class="container-fluid row" style="margin-top: 2%;">
+                <div style="margin: auto;">
+                    <h4>Envoie de SMS</h4>
+                </div>
             </div>
-        </div>
-        <div class="form-row card-margin">
-            <mat-form-field class="container-fluid">
-                <input type="text" matInput placeholder="Expéditeur">
-            </mat-form-field>
-        </div>
-        <div class="form-row">
-            <div class="container-fluid">Destinataires: </div>
-        </div>
-
-        <div class="form-row card-margin">
-            <mat-radio-group  class="container-fluid" [(ngModel)]="nbrdest" color="primary">
-                <mat-radio-button  value="1">Un</mat-radio-button>
-                &nbsp;&nbsp;<mat-radio-button value="2">Plusieurs</mat-radio-button>
-            </mat-radio-group>
-
-
-            <div class="form-row card-margin" *ngIf="nbrdest==1">
-                <mat-form-field class="container-fluid ">
-                    <input type="telephone" matInput placeholder="Numéro">
+            <div class="form-row card-margin">
+                <mat-form-field class="container-fluid">
+                    <input type="text" matInput [(ngModel)]="sender" name="sender" placeholder="Expéditeur">
                 </mat-form-field>
             </div>
-            <div class="form-row card-margin " *ngIf="nbrdest==2" style="margin:1%;">
-                <div class="col container-fluid">
-                    <button mat-raised-button color="primary" (click)="fileInput.click()">
-                        Charger un fichier
-                        <input #fileInput type="file" style="display:none;" />
-                    </button>
-                </div>
-                <div class="container-fluid col">
-                    <p></p>
-                </div>
+            <div class="form-row">
+                <div class="container-fluid">Destinataires: </div>
             </div>
     
-            <div class="form-row card-margin" *ngIf="nbrdest==2">
+            <div class="form-row card-margin">
+                <mat-radio-group class="container-fluid" [(ngModel)]="nbrdest" name="nbrdest" color="primary">
+                    <mat-radio-button value="1">Un</mat-radio-button>
+                    &nbsp;&nbsp;<mat-radio-button value="2">Plusieurs</mat-radio-button>
+                </mat-radio-group>
+    
+    
+                <div class="form-row card-margin" *ngIf="nbrdest==1">
+                        <int-phone-prefix [defaultCountry]="'sn'" [(ngModel)]="numero" name="numero" ></int-phone-prefix>
+                        {{numero}}
+                </div>
+                <div class="form-row card-margin " *ngIf="nbrdest==2" style="margin:1%;">
+                    <div class="row container-fluid">
+                        <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+                            Charger un fichier
+                            <input #fileInput type="file" (change)="uploadFile($event)" style="display:none;" />
+                        </button>
+                    </div>
+                    <div class="container-fluid row">
+                        <p class="margin" style="margin-top:2%;">{{fileUploaded?.name}}</p>
+                    </div>
+                </div>
+    
+                <div class="form-row card-margin" *ngIf="nbrdest==2">
+                    <mat-form-field class="container-fluid">
+                        <input type="text" name="campagne" [(ngModel)]="campagne" matInput placeholder="Identifiant Campagne">
+                    </mat-form-field>
+                </div>
+    
+            </div>
+    
+            <div class="form-group card-margin">
                 <mat-form-field class="container-fluid">
-                    <input type="text" matInput placeholder="Identifiant Campagne">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput #input rows="7" [(ngModel)]="text" name="text"></textarea>
+                    <mat-hint align="end">{{input.value?.length || 0}}/160</mat-hint>
                 </mat-form-field>
             </div>
-
-        </div>
-        
-        <div class="form-group card-margin">
-            <mat-form-field class="container-fluid">
-                <mat-label>Message</mat-label>
-                <textarea matInput #input rows="7"></textarea>
-                <mat-hint align="end">{{input.value?.length || 0}}/160</mat-hint>
-            </mat-form-field>
-        </div>
-
-        <div class="form-row">
-            <div style="margin:auto;">
-                <button mat-raised-button color="primary">Envoyer</button>
+    
+            <div class="form-row">
+                <div style="margin:auto;">
+                    <button mat-raised-button color="primary" type="submit">Envoyer</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
+</div>

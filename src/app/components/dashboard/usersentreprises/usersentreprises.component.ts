@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Utilisateur } from 'src/app/models/utilisateur';
+import { ActivatedRoute } from '@angular/router';
+import { ClientService } from 'src/app/services/client.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-usersentreprises',
@@ -81,12 +84,54 @@ export class UsersentreprisesComponent implements OnInit {
       }
     }
   ];
-  constructor() { }
+  idclient;
+  entreprise;
+  constructor(private userservice: UsersService, private activateRoute: ActivatedRoute,private clientservice: ClientService) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Utilisateur>(this.data);
+    this.activateRoute.paramMap.subscribe(param => {
+      this.idclient = param.get("id");
+      this.clientservice.getByIdClient(this.idclient).subscribe(response =>{
+        this.entreprise = response;
+        this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
+          this.dataSource = new MatTableDataSource<any>(response);
+
+        })
+      },error => {
+        
+      });
+    });
+    
+    
+
 
   }
 
+  lock(iduser){
+    if(confirm("Voulez vous desactiver cet utilisateur")){
+      this.userservice.lock(iduser).subscribe(response => {
+        alert(response.data.message);
+        this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
+          this.dataSource = new MatTableDataSource<any>(response);
+
+        })
+      });
+      
+    }
+  }
+
+
+  unlock(iduser){
+    if(confirm("Voulez vous activer cet utilisateur")){
+      this.userservice.unlock(iduser).subscribe(response => {
+        alert(response.data.message);
+        this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
+          this.dataSource = new MatTableDataSource<any>(response);
+
+        })
+      });
+      
+    }
+  }
 
 }

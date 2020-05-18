@@ -1,36 +1,36 @@
 <div class="container-fluid" style="margin-top: 10%;">
     <div class="form">
         <mat-card class="col-sm-5" style="margin: auto;">
-            <form class="form-group container-fluid">
+            <form class="form-group container-fluid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
                 <mat-card-header>
-                    <mat-card-title>Ajout d'un utilisateur</mat-card-title>
+                    <mat-card-title>{{isedit?'Edition d\'un utilisateur':'Ajout d\'un utilisateur'}}</mat-card-title>
                     <mat-card-subtitle><div class="container-fluid card">
-                        <span>Client: Black Star Technologies</span>
+                        <span>CLIENT: {{entreprise?.raisonsociale}}</span>
                     </div></mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content class="container-fluid">
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Prénom" required>
+                                <input matInput placeholder="Prénom" formControlName="prenom" required>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Nom" required>
+                                <input matInput placeholder="Nom" formControlName="nom" required>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Login" required>
+                                <input matInput placeholder="Login" formControlName="login" required>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Email" required>
+                                <input matInput placeholder="Email" formControlName="email" required>
                             </mat-form-field>
                         </div>
                     </div>
@@ -38,24 +38,24 @@
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Matricule" required>
+                                <input matInput placeholder="Matricule" formControlName="matricule" required>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Téléphone" required>
+                                <input matInput placeholder="Téléphone" formControlName="telephone" required>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Mot de Passe" required>
+                                <input type="password" matInput placeholder="Mot de Passe" formControlName="password" required>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Confirmer Mot de Passe" required>
+                                <input type="password" matInput placeholder="Confirmer Mot de Passe" formControlName="password_confirmation" required>
                             </mat-form-field>
                         </div>
                     </div>
@@ -63,14 +63,20 @@
                         <div class="col">
                             <mat-form-field>
                                 <mat-label>Fonction</mat-label>
-                                <mat-select>
+                                <mat-select [compareWith]="compareFn" formControlName="nom_fonction">
+                                    <mat-option *ngFor="let fonction of fonctions " [value]="fonction.nom">
+                                        {{fonction.nom}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
                                 <mat-label>Département</mat-label>
-                                <mat-select>
+                                <mat-select [compareWith]="compareFn" formControlName="nom_departement">
+                                    <mat-option *ngFor="let departement of departements" [value]="departement.nom">
+                                        {{departement.nom}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -82,7 +88,7 @@
                     <button type="button" mat-raised-button (click)="goBack()"
                         color="warn">Annuler</button>
 
-                    <button mat-raised-button type="submit" color="primary">Enregistrer</button>
+                    <button type="submit" mat-raised-button type="submit" color="primary">Enregistrer</button>
                 </mat-card-actions>
             </form>
         </mat-card>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { DataService } from 'src/app/services/data.service';
+import * as moment from 'moment';
+import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-rechargements',
   templateUrl: './rechargements.component.html',
@@ -9,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class RechargementsComponent implements OnInit {
   date1 = new Date();
   date2 = new Date();
+  entreprise;
   displayedColumns: string[] = [
     `id`,
     `montant`,
@@ -46,11 +49,24 @@ export class RechargementsComponent implements OnInit {
 
     }
   ];
-  constructor() { }
+  entreprises;
+  constructor(private dataservice: DataService, private clientservice: ClientService) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any[]>(this.data);
-
+    // this.dataSource = new MatTableDataSource<any[]>(this.data);
+    this.getRechargements(localStorage.getItem('etps'));
+    this.clientservice.listEntreprise().subscribe(response => {
+      this.entreprises = response;
+    });
   }
 
+  getRechargements(idclient){
+    this.dataservice.rechargements(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+      this.dataSource = new MatTableDataSource<any[]>(response);
+    });
+  }
+
+  rechercher(){
+    this.getRechargements(this.entreprise);
+  }
 }

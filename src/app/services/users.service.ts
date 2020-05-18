@@ -31,8 +31,21 @@ export class UsersService {
     return this.http.get<any>(this.api_list_admin);
   }
 
-  
+  getUserById(iduser){
+    return this.http.get<any>(this.api_url + `utilisateurs/${iduser}`)
+  }
 
+  getUserByLogin(login){
+    return this.http.get<any>(this.api_url + `utilisateurs/login/${login}`);
+  }
+
+  lock(iduser) {
+    return this.http.get<any>(this.api_url + `utilisateurs/${iduser}/lock`);
+  }
+
+  unlock(iduser){
+    return this.http.get<any>(this.api_url + `utilisateurs/${iduser}/unlock`)
+  }
   createDep(nom_departement: any) {
     return this.http.post<any>(this.api_create_departement,{nom_departement:nom_departement});
   }
