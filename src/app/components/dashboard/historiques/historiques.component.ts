@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExcelserviceService } from 'src/app/shareservice/excelservice.service';
 import { ClientService } from 'src/app/services/client.service';
+import { DataService } from 'src/app/services/data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-historiques',
@@ -13,10 +15,10 @@ export class HistoriquesComponent implements OnInit {
   date2 = new Date();
   displayedColumns: string[] = [
     `id`,
-    `receiver`,
+    `to`,
     `status`,
-    `last_update`,
-    "ret_id"
+    `lastupdate`,
+    "campagne.retid"
   ];
   dataSource: MatTableDataSource<any>;
 
@@ -160,7 +162,7 @@ export class HistoriquesComponent implements OnInit {
   ];
   entreprises: any;
   entreprise;
-  constructor(private exportservice: ExcelserviceService,private clientservice: ClientService) { }
+  constructor(private exportservice: ExcelserviceService,private clientservice: ClientService,private dataservice: DataService) { }
 
   ngOnInit(): void {
     this.dataSource1 = new MatTableDataSource<any[]>(this.data1);
@@ -170,6 +172,8 @@ export class HistoriquesComponent implements OnInit {
     this.clientservice.listEntreprise().subscribe(response=>{
       this.entreprises = response;
     });
+
+    this.getDeliveries(localStorage.getItem('etps'));
 
   }
 
@@ -194,6 +198,15 @@ export class HistoriquesComponent implements OnInit {
   }
 
 
-  
+  getDeliveries(idclient){
+    idclient = idclient==undefined? localStorage.getItem('etps'): idclient;
+    this.dataservice.getDeliveries(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+      this.dataSource = new MatTableDataSource<any[]>(response);
+    });
+  }
+
+  rechercher(){
+    this.getDeliveries(this.entreprise);
+  }
 
 }

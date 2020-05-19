@@ -60,6 +60,9 @@ export class UsersService {
     return this.http.post<any>(this.api_url + `utilisateur/password/reset`,data);
   }
 
+  delete(iduser){
+    return this.http.delete<any>(this.api_url + `utilisateurs/${iduser}`);
+  }
   createDep(nom_departement: any) {
     return this.http.post<any>(this.api_create_departement,{nom_departement:nom_departement});
   }

@@ -69,13 +69,13 @@
                     <button matTooltip="éditer" mat-icon-button color="primary" [routerLink]="['edit',element.id]">
                         <i class="fa fa-edit"></i>
                     </button>
-                    <button *ngIf="element.accountNonLocked" (click)="lock(element.id)" ng-show="actif" matTooltip="désactiver" mat-icon-button color="warn" >
+                    <button *ngIf="element.status!='bloque'" (click)="lock(element.id)"  matTooltip="désactiver" mat-icon-button color="warn" >
                         <i class="fa fa-stop"></i>
                     </button>
-                    <button *ngIf="!element.accountNonLocked" (click)="unlock(element.id)" ng-show="actif" matTooltip="activer" mat-icon-button color="primary" >
+                    <button *ngIf="element.status=='bloque'" (click)="unlock(element.id)"  matTooltip="activer" mat-icon-button color="primary" >
                         <i class="fa fa-play"></i>
                     </button>
-                    <button matTooltip="supprimer" mat-icon-button color="warn">
+                    <button matTooltip="supprimer" (click)="supprimer(element.id)" mat-icon-button color="warn">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

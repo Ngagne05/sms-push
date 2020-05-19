@@ -15,9 +15,9 @@ export class RechargementsComponent implements OnInit {
   displayedColumns: string[] = [
     `id`,
     `montant`,
-    `date_recharge`,
+    `datereglement`,
     `moyen`,
-    'ancien_solde',
+    'anciensolde',
     `entreprise`
   ];
   dataSource: MatTableDataSource<any>;
@@ -61,6 +61,7 @@ export class RechargementsComponent implements OnInit {
   }
 
   getRechargements(idclient){
+    idclient = idclient==undefined? localStorage.getItem('etps'): idclient;
     this.dataservice.rechargements(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
     });

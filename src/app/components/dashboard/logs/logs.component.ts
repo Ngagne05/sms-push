@@ -50,15 +50,16 @@ export class LogsComponent implements OnInit {
   ngOnInit(): void {
     
     // this.dataSource = new MatTableDataSource<any[]>(this.data);
-    this.getLogs(localStorage.getItem('etps'));
+    //0 = tous events
+    this.getLogs(0,localStorage.getItem('etps'));
     this.getEvenements();
     this.clientservice.listEntreprise().subscribe(response => {
       this.entreprises = response;
     });
   }
 
-  getLogs(idclient){
-    this.datasevice.logs(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+  getLogs(idevent,idclient){
+    this.datasevice.logs(idevent,idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
     });
   }

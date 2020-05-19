@@ -108,7 +108,7 @@ export class UsersentreprisesComponent implements OnInit {
   }
 
   lock(iduser){
-    if(confirm("Voulez vous desactiver cet utilisateur")){
+    if(confirm("Voulez vous désactiver cet utilisateur")){
       this.userservice.lock(iduser).subscribe(response => {
         alert(response.data.message);
         this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
@@ -122,7 +122,7 @@ export class UsersentreprisesComponent implements OnInit {
 
 
   unlock(iduser){
-    if(confirm("Voulez vous activer cet utilisateur")){
+    if(confirm("Voulez-vous activer cet utilisateur")){
       this.userservice.unlock(iduser).subscribe(response => {
         alert(response.data.message);
         this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
@@ -131,6 +131,22 @@ export class UsersentreprisesComponent implements OnInit {
         })
       });
       
+    }
+  }
+
+  supprimer(iduser){
+    if(confirm("Voulez-vous supprimer cet utilisateur?")){
+      this.userservice.delete(iduser).subscribe(response => {
+        alert(response.data.message);
+        if(response.data.code==200){
+          this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
+            this.dataSource = new MatTableDataSource<any>(response);
+  
+          })
+        }
+      },error => {
+        alert(error.message);
+      });
     }
   }
 

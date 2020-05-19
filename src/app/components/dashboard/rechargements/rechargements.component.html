@@ -62,21 +62,21 @@
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="ancien_solde">
+        <ng-container matColumnDef="anciensolde">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ancien Solde </th>
-          <td mat-cell *matCellDef="let row"> {{row.ancien_solde}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.anciensolde}} </td>
         </ng-container>
     
         <!-- Color Column -->
-        <ng-container matColumnDef="date_recharge">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Rechargement</th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.date_recharge}} </td>
+        <ng-container matColumnDef="datereglement">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Réglement</th>
+          <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.datereglement}} </td>
         </ng-container>
     
         <!-- Color Column -->
         <ng-container matColumnDef="entreprise">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Client </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.entreprise}} </td>
+          <td mat-cell *matCellDef="let row" [style.color]="row.solde"> {{row.entreprise.raisonsociale}} </td>
         </ng-container>
         
         
