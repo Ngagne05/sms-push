@@ -70,7 +70,7 @@
         <!-- Color Column -->
         <ng-container matColumnDef="datereglement">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Réglement</th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.datereglement}} </td>
+          <td mat-cell *matCellDef="let row" [style.color]="row.cout_unitaire"> {{row.datereglement | date: 'dd/MM/yyyy'}} </td>
         </ng-container>
     
         <!-- Color Column -->
