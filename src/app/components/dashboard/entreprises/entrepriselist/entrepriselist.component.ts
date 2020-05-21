@@ -39,6 +39,15 @@ export class EntrepriselistComponent implements OnInit {
     if(confirm("Voulez-vous supprimer ce client?"))
     this.clientService.delete(idclient).subscribe(response => {
       alert(response.data.message);
+      if(response.data.code == 200){
+        this.clientService.listEntreprise().subscribe(response =>{
+          console.log(response);
+          this.dataSource = new MatTableDataSource<Entreprise>(response);
+          this.dataSource.paginator = this.paginator;
+        }, error => {
+          console.log(error);
+        });
+      }
     },
       error => {
         alert(error.message);

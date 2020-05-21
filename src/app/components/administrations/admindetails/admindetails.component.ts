@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from 'src/app/models/utilisateur';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-admindetails',
@@ -35,9 +36,12 @@ export class AdmindetailsComponent implements OnInit {
       telephone:""
     }
   };
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
   }
 
+  goBack(){
+    this.location.back();
+  }
 }

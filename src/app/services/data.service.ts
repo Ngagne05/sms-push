@@ -28,11 +28,9 @@ export class DataService {
     return this.http.get<any>(this.api_url + `evenements`);
   }
 
-  historiques_resume(){
-
+  historiques_resume(idclient,start,end){
+    return this.http.post<any>(this.api_url +`deliverys/entreprises/${idclient}/period/resume`,{start,end})
   }
 
-  historiques_details(){
-
-  }
+  
 }

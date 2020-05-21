@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Location } from '@angular/common';
 import { ClientService } from 'src/app/services/client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-tarifications',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tarifications.component.scss']
 })
 export class TarificationsComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   displayedColumns: string[] = [
     'indicatif',
@@ -28,6 +30,7 @@ export class TarificationsComponent implements OnInit {
   idclient;
   isedit=false;
   dataSource: MatTableDataSource<any>;
+  current_tarif;
   constructor(private activatedRoute: ActivatedRoute, private location: Location, private clientservice: ClientService, private fb: FormBuilder) { }
   formGroup: FormGroup = this.fb.group({
     indicatif: ['', Validators.required],
@@ -40,7 +43,7 @@ export class TarificationsComponent implements OnInit {
       this.idclient = params.get("id");
       this.clientservice.listeTarif(this.idclient).subscribe(response => {
         this.dataSource = new MatTableDataSource(response);
-
+        this.dataSource.paginator = this.paginator;
       }, error => {
 
       });
@@ -63,7 +66,7 @@ export class TarificationsComponent implements OnInit {
         this.formGroup.reset();
         this.clientservice.listeTarif(this.idclient).subscribe(response => {
           this.dataSource = new MatTableDataSource(response);
-  
+          this.dataSource.paginator = this.paginator;
         }, error => {
   
         });
@@ -71,14 +74,14 @@ export class TarificationsComponent implements OnInit {
         console.error(error);
       });
       else{
-        this.clientservice.updateTarification(this.idclient,this.formGroup.value.cout_unitaire).subscribe(response =>{
+        this.clientservice.updateTarification(this.current_tarif.id,this.formGroup.value.cout_unitaire).subscribe(response =>{
           console.log(response);
         alert(response.data.message);
         if(response.data.code == 201)
         this.formGroup.reset();
         this.clientservice.listeTarif(this.idclient).subscribe(response => {
           this.dataSource = new MatTableDataSource(response);
-  
+          this.dataSource.paginator = this.paginator;
         }, error => {
   
         });
@@ -95,6 +98,14 @@ export class TarificationsComponent implements OnInit {
     if (confirm("Voulez vous vraiment supprimer cette destination")) {
       this.clientservice.supprimerTarif(tarif.id).subscribe((response: any) => {
         alert(response.data.message);
+        if(response.data.code==200){
+          this.clientservice.listeTarif(this.idclient).subscribe(response => {
+            this.dataSource = new MatTableDataSource(response);
+    
+          }, error => {
+    
+          });
+        }
       }, error => {
         alert(error.message);
       });
@@ -106,7 +117,7 @@ export class TarificationsComponent implements OnInit {
     this.formGroup.controls['indicatif'].setValue(tarif.indicatif);
     this.formGroup.controls['operateur'].setValue(tarif.operateur);
     this.formGroup.controls['cout_unitaire'].setValue(tarif.coutsms);
-
+    this.current_tarif = tarif;
     this.formGroup.controls['indicatif'].disable();
     this.formGroup.controls['operateur'].disable();
 

@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 import { ClientService } from 'src/app/services/client.service';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-rechargements',
   templateUrl: './rechargements.component.html',
   styleUrls: ['./rechargements.component.scss']
 })
 export class RechargementsComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   date1 = new Date();
   date2 = new Date();
   entreprise;
@@ -64,6 +67,7 @@ export class RechargementsComponent implements OnInit {
     idclient = idclient==undefined? localStorage.getItem('etps'): idclient;
     this.dataservice.rechargements(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

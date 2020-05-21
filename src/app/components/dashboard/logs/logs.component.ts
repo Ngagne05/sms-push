@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 import { ClientService } from 'src/app/services/client.service';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-logs',
   templateUrl: './logs.component.html',
@@ -44,8 +45,10 @@ export class LogsComponent implements OnInit {
   ]
   entreprises: any;
   entreprise; 
-  
+  evenements;
+  evenement;
   constructor(private datasevice: DataService,private clientservice: ClientService) { }
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit(): void {
     
@@ -56,17 +59,23 @@ export class LogsComponent implements OnInit {
     this.clientservice.listEntreprise().subscribe(response => {
       this.entreprises = response;
     });
+    this.getEvenements();
   }
 
   getLogs(idevent,idclient){
     this.datasevice.logs(idevent,idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   getEvenements(){
     this.datasevice.evenements().subscribe(response => {
-      console.log(response);
+      this.evenements = response;
     })
+  }
+
+  rechercher(){
+    this.getLogs(this.evenement,this.entreprise);
   }
 }

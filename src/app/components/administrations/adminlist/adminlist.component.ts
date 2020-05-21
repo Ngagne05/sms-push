@@ -88,7 +88,7 @@ export class AdminlistComponent implements OnInit {
   ngOnInit(): void {
     this.clientservice.listUsersEntreprise(localStorage.getItem('etps')).subscribe(response => {
       this.dataSource = new MatTableDataSource<Utilisateur>(response);
-
+      this.dataSource.paginator = this.paginator;
     });
 
   }

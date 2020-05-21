@@ -26,7 +26,7 @@ export class AdmincreateComponent implements OnInit {
     nom: ['',Validators.required],
     login: ['',Validators.required],
     email: ['',Validators.required],
-    matricule: ['',Validators.required],
+    matricule: [''],
     telephone: [''],
     password: [''],
     password_confirmation: [''],
@@ -90,7 +90,7 @@ export class AdmincreateComponent implements OnInit {
       this.clientService.createUser(this.idclient,this.formGroup.value).subscribe(response => {
         alert(response.data.message);
         if(response.data.code == 201)
-          this.router.navigate([`/dashboard/entreprises/users`,this.idclient]);
+          this.router.navigate([`/dashboard/utilisateurs/details`,this.idclient]);
       },error => {
         alert(error.message);
       })

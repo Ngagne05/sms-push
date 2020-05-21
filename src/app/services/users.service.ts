@@ -61,7 +61,7 @@ export class UsersService {
   }
 
   delete(iduser){
-    return this.http.delete<any>(this.api_url + `utilisateurs/${iduser}`);
+    return this.http.post<any>(this.api_url + `utilisateurs/${iduser}/delete`,null);
   }
   createDep(nom_departement: any) {
     return this.http.post<any>(this.api_create_departement,{nom_departement:nom_departement});
@@ -76,7 +76,7 @@ export class UsersService {
     return this.http.post<any>("",fonction);
   }
   deleteFonc(idfonction) {
-    return this.http.delete<any>(this.api_all_fonction+`/${idfonction}`);
+    return this.http.post<any>(this.api_all_fonction+`/${idfonction}/delete`,null);
   }
   getFoncs() {
     return this.http.get<any>(this.api_all_fonction);
@@ -85,6 +85,6 @@ export class UsersService {
     return this.http.get<any>(this.api_all_departement);
   }
   deleteDep(iddepartement) {
-    return this.http.delete<any>(this.api_all_departement + `/${iddepartement}`);
+    return this.http.post<any>(this.api_all_departement + `/${iddepartement}/delete`,null);
   }
 }

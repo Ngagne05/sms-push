@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 10%;">
     <div class="form">
         <mat-card class="col-sm-5" style="margin: auto;">
-            <form class="form-group container-fluid" [formGroup]="formGroup">
+            <form class="form-group container-fluid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
                 <mat-card-header>
                     <mat-card-title>{{isedit?'Edition d\'un utilisateur':'Ajout d\'un utilisateur'}}</mat-card-title>
@@ -36,7 +36,7 @@
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Matricule" formControlName="matricule" required>
+                                <input matInput placeholder="Matricule" formControlName="matricule" >
                             </mat-form-field>
                         </div>
                         <div class="col">
@@ -48,12 +48,12 @@
                     <div class="form-row">
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Mot de Passe" formControlName="password" required>
+                                <input matInput type="password" placeholder="Mot de Passe" formControlName="password" required>
                             </mat-form-field>
                         </div>
                         <div class="col">
                             <mat-form-field>
-                                <input matInput placeholder="Confirmer Mot de Passe" formControlName="password_confirmation" required>
+                                <input matInput type="password" placeholder="Confirmer Mot de Passe" formControlName="password_confirmation" required>
                             </mat-form-field>
                         </div>
                     </div>

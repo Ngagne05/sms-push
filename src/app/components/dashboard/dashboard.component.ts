@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  Role=Role;
   entreprise = {
     nom : "BST",
     login :"guy",

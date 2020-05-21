@@ -11,12 +11,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EntreprisecreateComponent implements OnInit {
 
-  constructor(private activateRoute: ActivatedRoute, private location: Location, private clientservice: ClientService,private formBuilder: FormBuilder,
+  constructor(private activateRoute: ActivatedRoute, private location: Location, private clientservice: ClientService, private formBuilder: FormBuilder,
     private router: Router) { }
-  formGroup:FormGroup = this.formBuilder.group({
-    raison_sociale: ['',Validators.required],
-    adresse: ['',Validators.required],
-    telephone: ['',Validators.required],
+  formGroup: FormGroup = this.formBuilder.group({
+    raison_sociale: ['', Validators.required],
+    adresse: ['', Validators.required],
+    telephone: ['', Validators.required],
 
   })
   editpath = false;
@@ -24,12 +24,12 @@ export class EntreprisecreateComponent implements OnInit {
   idclient;
   ngOnInit(): void {
     console.log(this.router.url);
-    this.editpath = this.router.url == '/dashboard/entreprises/create' ? false:true;
-    this.componentTitle =  this.editpath?'Editer un client': 'Ajout d\'un client';
-    if(this.editpath){
-      this.activateRoute.paramMap.subscribe(param =>{
+    this.editpath = this.router.url == '/dashboard/entreprises/create' ? false : true;
+    this.componentTitle = this.editpath ? 'Editer un client' : 'Ajout d\'un client';
+    if (this.editpath) {
+      this.activateRoute.paramMap.subscribe(param => {
         this.idclient = param.get("id");
-        this.clientservice.getByIdClient(this.idclient).subscribe(response =>{
+        this.clientservice.getByIdClient(this.idclient).subscribe(response => {
           this.formGroup.controls["raison_sociale"].setValue(response.raisonsociale);
           this.formGroup.controls["adresse"].setValue(response.adresse);
           this.formGroup.controls["telephone"].setValue(response.telephone);
@@ -40,32 +40,32 @@ export class EntreprisecreateComponent implements OnInit {
     }
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 
 
-  onSubmit(){
-    if(this.formGroup.valid){
-      if(!this.editpath)
-      this.clientservice.create(this.formGroup.value).subscribe((response)=>{ 
-        alert(response.data.message);
-          if(response.data.code == 200)
-          this.router.navigate(['/dashboard/entreprises/details',this.idclient]);
-      },error =>{
-        alert(error.message);
-      })
-      else{
-
-        this.clientservice.update(this.idclient,this.formGroup.value).subscribe(response =>{
+  onSubmit() {
+    if (this.formGroup.valid) {
+      if (!this.editpath)
+        this.clientservice.create(this.formGroup.value).subscribe((response) => {
           alert(response.data.message);
-          if(response.data.code == 200)
-          this.router.navigate(['/dashboard/entreprises/details',this.idclient]);
-        },error=>{
+          if (response.data.code == 201)
+            this.router.navigate(['/dashboard/entreprises']);
+        }, error => {
+          alert(error.message);
+        })
+      else {
+
+        this.clientservice.update(this.idclient, this.formGroup.value).subscribe(response => {
+          alert(response.data.message);
+          if (response.data.code == 200)
+            this.router.navigate(['/dashboard/entreprises/details', this.idclient]);
+        }, error => {
           alert(error.message);
         });
       }
-    }else{
+    } else {
       alert("Veuillez remplir tous les champs");
     }
   }

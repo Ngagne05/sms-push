@@ -27,14 +27,20 @@
         <table class="entreprise-infos mat-elevation-z4">
             <tbody>
                 <tr>
-                    <th>
-                        <mat-icon>work</mat-icon>
+                    <th class="container-fluid ">
+                        <mat-icon class="thicon">work</mat-icon>
                     </th>
-                    <td>{{user?.login}}</td>
+                    <td>{{user?.entreprise?.raisonsociale}}</td>
                 </tr>
                 <tr>
-                    <th>
-                        <mat-icon>account_balance</mat-icon>
+                    <th class="container-fluid ">
+                        <mat-icon class="thicon">person</mat-icon>
+                    </th>
+                    <td>{{user?.prenom + ' ' + user?.nom}}</td>
+                </tr>
+                <tr>
+                    <th class="container-fluid " >
+                        <mat-icon class="thicon">account_balance</mat-icon>
                     </th>
                     <td>{{user?.entreprise?.solde}} FCFA</td>
                 </tr>
@@ -44,12 +50,12 @@
    <div class="container-fluid">
     <button  class="btnoption" style="width: 100%;" [routerLink]="['send']" [routerLinkActive]="['btnoptionactive']">Envoyer SMS</button>
     <button  class="btnoption" style="width: 100%;" [routerLink]="['historiques']" [routerLinkActive]="['btnoptionactive']">Historique</button>
-    <button  class="btnoption" style="width: 100%;" [routerLink]="['rechargements']" [routerLinkActive]="['btnoptionactive']">Rechargements</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['rechargements']" [routerLinkActive]="['btnoptionactive']" *appUserRole="[Role.SUPERADMIN]">Rechargements</button>
     
-    <button  class="btnoption" style="width: 100%;" [routerLink]="['entreprises']" [routerLinkActive]="['btnoptionactive']">Clients</button>
-    <button  class="btnoption" style="width: 100%;" [routerLink]="['utilisateurs']" [routerLinkActive]="['btnoptionactive']">Admins</button>
-    <button  class="btnoption" style="width: 100%;" [routerLink]="['logs']" [routerLinkActive]="['btnoptionactive']">Logs</button>
-    <button  class="btnoption" style="width: 100%;" [routerLink]="['parametres']" [routerLinkActive]="['btnoptionactive']">Paramètres</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['entreprises']" [routerLinkActive]="['btnoptionactive']" *appUserRole="[Role.SUPERADMIN]">Clients</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['utilisateurs']" [routerLinkActive]="['btnoptionactive']" *appUserRole="[Role.SUPERADMIN,Role.ADMIN]">Admins</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['logs']" [routerLinkActive]="['btnoptionactive']" *appUserRole="[Role.SUPERADMIN]">Logs</button>
+    <button  class="btnoption" style="width: 100%;" [routerLink]="['parametres']" [routerLinkActive]="['btnoptionactive']" *appUserRole="[Role.SUPERADMIN]">Paramètres</button>
 
    </div>
 

@@ -19,10 +19,10 @@ export class ClientService {
     return this.http.post<any>(this.api_entreprise_create,client);
   }
   delete(idclient){
-    return this.http.delete<any>(this.api_url + `entreprise/${idclient}`)
+    return this.http.post<any>(this.api_url + `entreprises/${idclient}/delete`,null)
   }
   update(idclient,client){
-    return this.http.put<any>(this.api_url + `entreprises/${idclient}`,client);
+    return this.http.post<any>(this.api_url + `entreprises/${idclient}/edit`,client);
   }
   getByIdClient(idclient){
     return this.http.get<any>(this.api_url + `entreprises/${idclient}`);
@@ -50,14 +50,14 @@ export class ClientService {
     return this.http.post<any>(this.api_url+ `entreprises/${identreprise}/tarif`, tarif);
   }
   updateTarification(identreprise,tarif){
-    return this.http.put<any>(this.api_url + `tarifs/${identreprise}`, {cout_unitaire:tarif});
+    return this.http.post<any>(this.api_url + `tarifs/${identreprise}/edit`, {cout_unitaire:tarif});
   }
 
   listeTarif(identreprise){
-    return this.http.get<any>(this.api_url + `entreprises/${identreprise}/tarifs`)
+    return this.http.get<any>(this.api_url + `entreprises/${identreprise}/tarifs`);
   }
 
   supprimerTarif(idtarif){
-    return this.http.delete(this.api_url + `tarifs/${idtarif}`)
+    return this.http.post(this.api_url + `tarifs/${idtarif}/delete`,null);
   }
 }

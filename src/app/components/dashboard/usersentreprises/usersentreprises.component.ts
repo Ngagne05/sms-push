@@ -95,7 +95,7 @@ export class UsersentreprisesComponent implements OnInit {
         this.entreprise = response;
         this.clientservice.listUsersEntreprise(this.idclient).subscribe(response => {
           this.dataSource = new MatTableDataSource<any>(response);
-
+          this.dataSource.paginator = this.paginator;
         })
       },error => {
         

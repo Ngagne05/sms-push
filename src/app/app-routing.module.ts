@@ -23,6 +23,7 @@ import { ReinitpwdComponent } from './components/reinitpwd/reinitpwd.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ParametresComponent } from './components/dashboard/parametres/parametres.component';
 import { ReinitpwdcodeComponent } from './components/reinitpwdcode/reinitpwdcode.component';
+import { Role } from './models/role';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     children: [
       {
         path: "entreprises",
-        component: EntrepriselistComponent
+        component: EntrepriselistComponent,
+        data: {roles: [Role.SUPERADMIN]}
       },
       {
         path: "entreprises/destinations/:id",
@@ -82,7 +84,8 @@ const routes: Routes = [
         component: UsersentreprisesdetailsComponent
       },{
         path: "utilisateurs",
-        component: AdminlistComponent
+        component: AdminlistComponent,
+        data: {roles: [Role.SUPERADMIN,Role.ADMIN]}
       },{
         path: "utilisateurs/create",
         component: AdmincreateComponent
@@ -90,24 +93,30 @@ const routes: Routes = [
         path: "utilisateurs/edit/:id",
         component: AdmincreateComponent
       },{
-        path: "utilisateurs/details",
+        path: "utilisateurs/details/:id",
         component: AdmindetailsComponent
       },
       {
         path: "rechargements",
-        component: RechargementsComponent
+        component: RechargementsComponent,
+        data: {roles: [Role.SUPERADMIN,Role.ADMIN]}
       },
       {
         path: "historiques",
-        component: HistoriquesComponent
+        component: HistoriquesComponent,
+        data: {roles: [Role.SUPERADMIN,Role.ADMIN]}
       },
       {
         path: "logs",
-        component: LogsComponent
+        component: LogsComponent,
+        data: {roles: [Role.SUPERADMIN]}
+
       },
       {
         path: "parametres",
-        component: ParametresComponent
+        component: ParametresComponent,
+        data: {roles: [Role.SUPERADMIN]}
+
       },
       {
         path: "send",

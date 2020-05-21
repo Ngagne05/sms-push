@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExcelserviceService } from 'src/app/shareservice/excelservice.service';
 import { ClientService } from 'src/app/services/client.service';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
+import { MatPaginator } from '@angular/material/paginator';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-historiques',
@@ -11,6 +13,7 @@ import * as moment from 'moment';
   styleUrls: ['./historiques.component.scss']
 })
 export class HistoriquesComponent implements OnInit {
+  Role=Role;
   date1 = new Date();
   date2 = new Date();
   displayedColumns: string[] = [
@@ -21,18 +24,16 @@ export class HistoriquesComponent implements OnInit {
     "campagne.retid"
   ];
   dataSource: MatTableDataSource<any>;
-
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   displayedColumns1: string[] = [
-    `id`,
     `libelle`,
-    `nombre`
+    `occurence`
   ];
   dataSource1: MatTableDataSource<any>;
 
   displayedColumns12: string[] = [
-    `id`,
     `libelle`,
-    `nombre`
+    `occurence`
   ];
   dataSource12: MatTableDataSource<any>;
 
@@ -116,7 +117,7 @@ export class HistoriquesComponent implements OnInit {
   ];
 
   data12: any[] = [
-{
+    {
 
       id: "15",
       libelle: "non défini : contacter le provider",
@@ -162,19 +163,19 @@ export class HistoriquesComponent implements OnInit {
   ];
   entreprises: any;
   entreprise;
-  constructor(private exportservice: ExcelserviceService,private clientservice: ClientService,private dataservice: DataService) { }
+  constructor(private exportservice: ExcelserviceService, private clientservice: ClientService, private dataservice: DataService) { }
 
   ngOnInit(): void {
-    this.dataSource1 = new MatTableDataSource<any[]>(this.data1);
-    this.dataSource12 = new MatTableDataSource<any[]>(this.data12);
+    // this.dataSource1 = new MatTableDataSource<any[]>(this.data1);
+    // this.dataSource12 = new MatTableDataSource<any[]>(this.data12);
 
     this.dataSource = new MatTableDataSource<any[]>(this.data);
-    this.clientservice.listEntreprise().subscribe(response=>{
+    this.clientservice.listEntreprise().subscribe(response => {
       this.entreprises = response;
     });
 
     this.getDeliveries(localStorage.getItem('etps'));
-
+    this.getResume(localStorage.getItem('etps'));
   }
 
   exporter() {
@@ -188,8 +189,8 @@ export class HistoriquesComponent implements OnInit {
   }
 
   exporter1() {
-    let headers = ['id', 'libelle', 'nombre'];
-    let headers2 = ['ID', 'LIBELLE', 'NOMBRE'];
+    let headers = [ 'libelle', 'occurence'];
+    let headers2 = ['LIBELLE', 'NOMBRE'];
     const table = document.getElementById("resume");
     let name = prompt("Donnez le nom du fichier");
     if (name != undefined) {
@@ -198,15 +199,33 @@ export class HistoriquesComponent implements OnInit {
   }
 
 
-  getDeliveries(idclient){
-    idclient = idclient==undefined? localStorage.getItem('etps'): idclient;
-    this.dataservice.getDeliveries(idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+  getDeliveries(idclient) {
+    idclient = idclient == undefined ? localStorage.getItem('etps') : idclient;
+    this.dataservice.getDeliveries(idclient, moment(this.date1).format('DD/MM/YYYY'), moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+  getResume(idclient) {
+    idclient = idclient == undefined ? localStorage.getItem('etps') : idclient;
+    this.dataservice.historiques_resume(idclient, moment(this.date1).format('DD/MM/YYYY'), moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
+      let data1 = [];
+      let data2 = [];
+      for (let i = 0; i < response.length; i++) {
+        if (i < response.length / 2)
+          data1.push(response[i])
+        else
+          data2.push(response[i]);
+      }
+
+      this.dataSource1 = new MatTableDataSource<any[]>(data1);
+      this.dataSource12 = new MatTableDataSource<any[]>(data2);
     });
   }
 
-  rechercher(){
+  rechercher() {
     this.getDeliveries(this.entreprise);
+    this.getResume(this.entreprise);
   }
 
 }

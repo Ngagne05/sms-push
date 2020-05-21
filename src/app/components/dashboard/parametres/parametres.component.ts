@@ -103,7 +103,7 @@ export class ParametresComponent implements OnInit {
      this.userservice.deleteFonc(fonction.id).subscribe( data => {
       alert(data.data.message);
       this.userservice.getFoncs().subscribe( d => {
-        this.fonctions = d.data;
+        this.fonctions = d;
       });
     },error => alert(error.message));
   }
@@ -115,7 +115,7 @@ export class ParametresComponent implements OnInit {
      this.userservice.deleteDep(departement.id).subscribe( data => {
       alert(data.data.message);
       this.userservice.getDeps().subscribe( d => {
-        this.departements = d.data;
+        this.departements = d;
       },error=>alert(error.message));
     });
   }
