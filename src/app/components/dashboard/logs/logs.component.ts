@@ -10,12 +10,16 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./logs.component.scss']
 })
 export class LogsComponent implements OnInit {
+  defaultlog = {
+    id: -11,
+    libelle: 'TOUS'
+  };
   date1 = new Date();
   date2 = new Date();
   displayedColumns: string[] = [
     `id`,
-    `type_event`,
-    `create_time`,
+    `evenement`,
+    `datecreation`,
     `utilisateur`,
     `entreprise`
   ];
@@ -54,7 +58,7 @@ export class LogsComponent implements OnInit {
     
     // this.dataSource = new MatTableDataSource<any[]>(this.data);
     //0 = tous events
-    this.getLogs(0,localStorage.getItem('etps'));
+    this.getLogs(this.defaultlog.id,localStorage.getItem('etps'));
     this.getEvenements();
     this.clientservice.listEntreprise().subscribe(response => {
       this.entreprises = response;
@@ -63,6 +67,7 @@ export class LogsComponent implements OnInit {
   }
 
   getLogs(idevent,idclient){
+    idevent= idevent==undefined?this.defaultlog.id:idevent;
     this.datasevice.logs(idevent,idclient, moment(this.date1).format('DD/MM/YYYY'),moment(this.date2).format('DD/MM/YYYY')).subscribe(response => {
       this.dataSource = new MatTableDataSource<any[]>(response);
       this.dataSource.paginator = this.paginator;

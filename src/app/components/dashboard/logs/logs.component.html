@@ -5,6 +5,7 @@
           <mat-form-field>
             <mat-label>Evènement</mat-label>
             <mat-select [(ngModel)]="evenement" name="evenement">
+              <mat-option [value]="defaultlog.id">{{defaultlog.libelle}}</mat-option>
               <mat-option *ngFor="let evenement of evenements" [value]="evenement.id">{{evenement.libelle}}</mat-option>
             </mat-select>
         </mat-form-field> 
@@ -54,15 +55,15 @@
         </ng-container>
     
         <!-- Progress Column -->
-        <ng-container matColumnDef="type_event">
+        <ng-container matColumnDef="evenement">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Evènement </th>
-          <td mat-cell *matCellDef="let row"> {{row.type_event}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.evenement}} </td>
         </ng-container>
     
         <!-- Name Column -->
-        <ng-container matColumnDef="create_time">
+        <ng-container matColumnDef="datecreation">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-          <td mat-cell *matCellDef="let row"> {{row.create_time | date: 'dd/MM/yyyy'}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.datecreation | date: 'dd/MM/yyyy'}} </td>
         </ng-container>
     
         <!-- Color Column -->

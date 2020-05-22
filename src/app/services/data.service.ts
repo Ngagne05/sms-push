@@ -11,7 +11,8 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   logs(ideven,idclient,start,end){
-    
+    if(ideven==-11)
+      return this.http.post<any>(this.api_url+ `logs/period`,{start,end});
     return this.http.post<any>(this.api_url + `logs/evenements/${ideven}/entreprises/${idclient}/period`,{start,end});
   }
 
