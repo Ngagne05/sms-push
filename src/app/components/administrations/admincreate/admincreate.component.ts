@@ -60,7 +60,7 @@ export class AdmincreateComponent implements OnInit {
           this.formGroup.controls["nom_departement"].setValue(this.user.nom_departement);
 
           this.formGroup.controls["login"].disable();
-          this.formGroup.controls["email"].disable();
+          // this.formGroup.controls["email"].disable();
           this.formGroup.controls["password"].disable();
           this.formGroup.controls["password_confirmation"].disable();
 
