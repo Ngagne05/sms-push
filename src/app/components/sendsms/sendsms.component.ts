@@ -52,8 +52,12 @@ export class SendsmsComponent implements OnInit {
         this.readAsCSV();
         break;
       default: 
+        if(this.fileUploaded.type.includes('csv')){
+          this.readAsCSV();
+        }else{
         alert("Veuillez choisir un fichier csv (separateur: ; ).");
         this.fileUploaded =null;
+      }
         break;
 
     };
